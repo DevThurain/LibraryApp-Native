@@ -25,10 +25,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 layout="@layout/view_pod_book_type"
-                android:layout_below="@id/rvRecentBooks"
-                />
+                android:layout_below="@id/rvRecentBooks" />
 
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBookList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="12"
+                tools:listitem="@layout/view_holder_book_list"
+                android:layout_below="@id/vpBookTypeHome"/>
 
 
         </RelativeLayout>
