@@ -18,12 +18,11 @@
         android:id="@+id/tvBookTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_medium"
         android:layout_below="@id/ivBookCover"
-        android:text="@string/lbl_dummy"
-        android:textColor="@color/light_grey"
+        android:layout_marginTop="@dimen/margin_medium"
         android:maxLines="2"
-        />
+        android:text="@string/lbl_dummy"
+        android:textColor="@color/light_grey" />
 
     <LinearLayout
         android:layout_width="match_parent"

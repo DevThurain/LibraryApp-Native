@@ -75,6 +75,11 @@ class HomeFragment : Fragment(), HomeView {
         mBookListAdapter.setNewData(bookLists)
     }
 
+    override fun navigateToSearch() {
+
+
+    }
+
     override fun navigateToBookDetail() {
 
     }

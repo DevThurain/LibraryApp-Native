@@ -1,5 +1,6 @@
 package com.thurainx.libraryapp.mvp.presenters
 
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import com.thurainx.libraryapp.data.models.LibraryModelImpl
@@ -27,10 +28,15 @@ class HomePresenterImpl: ViewModel(),HomePresenter {
     }
 
     override fun onTapBook(bookVO: BookVO) {
-
+        Log.d("tap","tap book")
     }
 
     override fun onTapMoreBooks(bookList: BookListVO) {
+        Log.d("tap","tap more books")
 
+    }
+
+    override fun onTapSearch() {
+        mHomeView?.navigateToSearch()
     }
 }

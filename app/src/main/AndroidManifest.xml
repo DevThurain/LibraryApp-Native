@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.thurainx.libraryapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".TheLibraryApplication"
@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LibraryApp"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.BookDetailActivity"
+            android:exported="true">
+
+
+        </activity>
         <activity
             android:name=".activities.BasedActivity"
             android:exported="true">
