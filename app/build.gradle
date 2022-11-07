@@ -73,4 +73,7 @@ dependencies {
     implementation 'com.jakewharton.rxbinding4:rxbinding-core:4.0.0'
     implementation 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'
 
+    // recyclerview animation
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+
 }

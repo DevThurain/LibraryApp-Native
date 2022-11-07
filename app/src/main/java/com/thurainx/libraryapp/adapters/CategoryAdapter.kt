@@ -13,9 +13,9 @@ import com.thurainx.libraryapp.viewholders.CategoryViewHolder
 
 class CategoryAdapter(val delegate: CategoryDelegate) : RecyclerView.Adapter<CategoryViewHolder>(){
 
-    private var mCategoryList: List<CategoryVO> = listOf()
+    private var mCategoryList: ArrayList<CategoryVO> = arrayListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_holder_book,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.viewholder_category,parent,false)
 
         return CategoryViewHolder(view, delegate)
     }
@@ -30,8 +30,30 @@ class CategoryAdapter(val delegate: CategoryDelegate) : RecyclerView.Adapter<Cat
         return mCategoryList.size
     }
 
-    fun setNewData(categoryList: List<CategoryVO>){
+    fun setNewData(categoryList: ArrayList<CategoryVO>){
         mCategoryList = categoryList
         notifyDataSetChanged()
+    }
+
+    fun updateItem(categoryVO: CategoryVO){
+        val position = mCategoryList.indexOf(categoryVO)
+        mCategoryList.removeAt(position)
+        notifyItemRemoved(position)
+
+        mCategoryList.forEach {
+            it.isSelected = false
+        }
+        notifyItemRangeChanged(0,mCategoryList.size)
+
+        categoryVO.isSelected = true
+        mCategoryList.add(0, categoryVO)
+        notifyItemInserted(0)
+    }
+
+    fun clearItem(){
+        mCategoryList.forEach {
+            it.isSelected = false
+        }
+        notifyItemRangeChanged(0,mCategoryList.size)
     }
 }

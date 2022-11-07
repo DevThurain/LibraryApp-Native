@@ -14,7 +14,7 @@ class LibraryViewPagerAdapter(fragmentActivity: FragmentActivity) :
 
     override fun createFragment(position: Int): Fragment {
         return when(position){
-            1 -> YourBooksFragment()
+            0 -> YourBooksFragment()
             else -> YourShelvesFragment()
         }
     }
