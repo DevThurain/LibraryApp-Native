@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
+    android:layout_width="150dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_medium_2"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -8,8 +8,8 @@
 
     <com.thurainx.libraryapp.views.components.RoundedImageView
         android:id="@+id/ivBookCover"
-        android:layout_width="200dp"
-        android:layout_height="280dp"
+        android:layout_width="150dp"
+        android:layout_height="230dp"
         app:srcCompat="@drawable/dummy_book"
         android:scaleType="centerCrop"
         app:cornerRadius="@dimen/margin_medium_2" />

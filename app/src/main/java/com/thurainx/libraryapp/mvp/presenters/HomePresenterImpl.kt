@@ -1,11 +1,13 @@
 package com.thurainx.libraryapp.mvp.presenters
 
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModel
 import com.thurainx.libraryapp.data.models.LibraryModelImpl
+import com.thurainx.libraryapp.data.vos.BookListVO
 import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.mvp.views.HomeView
 
-class HomePresenterImpl: HomePresenter {
+class HomePresenterImpl: ViewModel(),HomePresenter {
     // view
     var mHomeView: HomeView? = null
 
@@ -25,6 +27,10 @@ class HomePresenterImpl: HomePresenter {
     }
 
     override fun onTapBook(bookVO: BookVO) {
+
+    }
+
+    override fun onTapMoreBooks(bookList: BookListVO) {
 
     }
 }

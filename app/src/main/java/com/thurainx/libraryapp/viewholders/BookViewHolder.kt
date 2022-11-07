@@ -26,6 +26,7 @@ class BookViewHolder(itemView: View,delegate: BookDelegate) : RecyclerView.ViewH
             .into(itemView.ivBookCover)
 
         itemView.tvBookPrice.text = "\$ ${bookVO.price.toString()}"
+        itemView.tvBookTitle.text = bookVO.title
 
     }
 }
