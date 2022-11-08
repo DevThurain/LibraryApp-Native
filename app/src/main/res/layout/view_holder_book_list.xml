@@ -25,14 +25,13 @@
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/margin_xlarge"
             android:layout_height="@dimen/margin_xlarge"
             app:srcCompat="@drawable/ic_arrow_right"
-            app:tint="@color/primary_blue"
-            />
+            app:tint="@color/primary_blue" />
 
     </LinearLayout>
 

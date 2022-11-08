@@ -10,9 +10,9 @@
         android:id="@+id/ivBookCover"
         android:layout_width="150dp"
         android:layout_height="230dp"
-        app:srcCompat="@drawable/dummy_book"
         android:scaleType="centerCrop"
-        app:cornerRadius="@dimen/margin_medium_2" />
+        app:cornerRadius="@dimen/margin_medium_2"
+        app:srcCompat="@drawable/dummy_book" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBookTitle"
