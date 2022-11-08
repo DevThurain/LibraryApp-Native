@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.thurainx.libraryapp.data.vos.BookListVO
 import com.thurainx.libraryapp.data.vos.BookVO
+import com.thurainx.libraryapp.utils.DateUtils
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.lang.Exception
@@ -34,6 +35,7 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
 
     // recent book
     override fun insertRecentBookToDatabase(bookVO: BookVO) {
+        bookVO.dateMillis = DateUtils.convertDateStringToMilli(bookVO.createdDate.toString())
         mLibraryDatabase?.recentBookDao()?.insertSingleBook(bookVO)
     }
 

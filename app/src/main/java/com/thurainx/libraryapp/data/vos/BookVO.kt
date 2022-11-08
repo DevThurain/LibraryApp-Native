@@ -60,5 +60,9 @@ data class BookVO(
     @SerializedName("book_list_name")
     var bookListName:String = "",
 
+    @ColumnInfo(name = "date_millis")
+    @SerializedName("date_millis")
+    var dateMillis:Long = 0,
+
 ) {
 }

@@ -7,6 +7,7 @@ import com.thurainx.libraryapp.data.models.LibraryModelImpl
 import com.thurainx.libraryapp.data.vos.BookListVO
 import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.mvp.views.HomeView
+import com.thurainx.libraryapp.utils.DateUtils
 
 class HomePresenterImpl : ViewModel(), HomePresenter {
     // view
