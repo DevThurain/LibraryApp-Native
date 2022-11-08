@@ -47,4 +47,9 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
         return mLibraryDatabase?.recentBookDao()?.getRecentBookList()
     }
 
+    override fun getAllRecentBookByCategory(category: String): LiveData<List<BookVO>>? {
+        return mLibraryDatabase?.recentBookDao()?.getAllRecentBookByCategory(category)
+
+    }
+
 }

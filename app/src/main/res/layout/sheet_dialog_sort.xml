@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSortAs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:text="Sort as"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_regular_2x_medium"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupSortType"
+        android:layout_marginVertical="@dimen/margin_medium_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_below="@id/tvSortAs">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbSortBookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sort By Book Title" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbSortAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sort By Author" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbSortDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sort By Released Date" />
+
+
+
+
+
+    </RadioGroup>
+
+
+</RelativeLayout>

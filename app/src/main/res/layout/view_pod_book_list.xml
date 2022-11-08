@@ -5,15 +5,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCategory"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="15"
-        tools:listitem="@layout/view_holder_category" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/margin_medium"
+            android:paddingBottom="@dimen/margin_small"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/margin_medium_2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="15"
+            tools:listitem="@layout/view_holder_category" />
+
+        <LinearLayout
+            android:id="@+id/layoutFilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rvCategory"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSelectSorting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingHorizontal="0dp"
+                android:text="Sort By Book Title"
+                android:textAllCaps="false"
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/text_regular"
+                app:icon="@drawable/ic_sort"
+                app:iconSize="@dimen/margin_large"
+                app:iconTint="@color/light_grey" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/btnSelectView"
+                android:layout_width="@dimen/margin_large"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_grid"
+                app:tint="@color/light_grey" />
+
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSmartBookList"
+            android:layout_below="@id/layoutFilters"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            tools:itemCount="15"
+            tools:listitem="@layout/layout_book_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
 
 
 

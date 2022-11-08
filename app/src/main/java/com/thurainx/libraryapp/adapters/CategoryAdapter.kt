@@ -44,9 +44,10 @@ class CategoryAdapter(val delegate: CategoryDelegate) : RecyclerView.Adapter<Cat
         }
     }
 
-    fun setNewData(categoryList: ArrayList<CategoryVO>){
-        categoryList.add(0,CategoryVO(""))
-        mCategoryList = categoryList
+    fun setNewData(categoryList: List<CategoryVO>){
+        val categoryArrayList = ArrayList(categoryList)
+        categoryArrayList.add(0,CategoryVO(""))
+        mCategoryList = categoryArrayList
         notifyDataSetChanged()
     }
 

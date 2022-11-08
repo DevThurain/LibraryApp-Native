@@ -19,9 +19,32 @@ interface RecentBookDao {
     @Query("SELECT * FROM books")
     fun getRecentBookList(): LiveData<List<BookVO>>
 
+    @Query("SELECT * FROM books WHERE book_list_name = :category")
+    fun getAllRecentBookByCategory(category: String): LiveData<List<BookVO>>
+
+
+//
+//    @Query("SELECT * FROM books ORDER BY title")
+//    fun getAllRecentBookSortedByBookName(): LiveData<List<BookVO>>
+//
+//    @Query("SELECT * FROM books ORDER BY date_millis")
+//    fun getAllRecentBookSortedByDate(): LiveData<List<BookVO>>
+//
+//
+//    // with category
+//    @Query("SELECT * FROM books WHERE book_list_name = :category")
+//    fun getAllRecentBookByCategorySortedByRecent(category: String): LiveData<List<BookVO>>
+//
+//    @Query("SELECT * FROM books WHERE book_list_name = :category ORDER BY title")
+//    fun getAllRecentBookByCategorySortedByBookName(category: String): LiveData<List<BookVO>>
+//
+//    @Query("SELECT * FROM books WHERE book_list_name = :category ORDER BY date_millis")
+//    fun getAllRecentBookSByCategorySortedByDate(category: String): LiveData<List<BookVO>>
+
+
     @Query("DELETE FROM books")
     fun deleteAllRecentBooks()
 
-
-
 }
+
+
