@@ -9,7 +9,8 @@ import com.thurainx.libraryapp.data.vos.CategoryVO
 import com.thurainx.libraryapp.delegate.BookDelegate
 import com.thurainx.libraryapp.delegate.CategoryDelegate
 import kotlinx.android.synthetic.main.view_holder_book.view.*
-import kotlinx.android.synthetic.main.viewholder_category.view.*
+import kotlinx.android.synthetic.main.view_holder_category.view.*
+import kotlinx.android.synthetic.main.view_category_clear.view.*
 
 class CategoryViewHolder(itemView: View, delegate: CategoryDelegate) : RecyclerView.ViewHolder(itemView) {
     private var mCategoryVO: CategoryVO? = null
@@ -19,6 +20,11 @@ class CategoryViewHolder(itemView: View, delegate: CategoryDelegate) : RecyclerV
             mCategoryVO?.let {
                 delegate.onTapCategory(it)
             }
+        }
+
+
+        itemView.btnCategoryClear?.setOnClickListener {
+            delegate.onTapClearCategory()
         }
     }
 

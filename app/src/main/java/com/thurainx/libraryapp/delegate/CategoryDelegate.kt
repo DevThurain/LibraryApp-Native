@@ -5,4 +5,5 @@ import com.thurainx.libraryapp.data.vos.CategoryVO
 
 interface CategoryDelegate {
     fun onTapCategory(categoryVO: CategoryVO)
+    fun onTapClearCategory()
 }

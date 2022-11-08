@@ -1,11 +1,10 @@
 package com.thurainx.libraryapp.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.thurainx.libraryapp.delegate.BookDelegate
 import com.thurainx.libraryapp.R
-import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.data.vos.CategoryVO
 import com.thurainx.libraryapp.delegate.CategoryDelegate
 import com.thurainx.libraryapp.viewholders.CategoryViewHolder
@@ -15,22 +14,38 @@ class CategoryAdapter(val delegate: CategoryDelegate) : RecyclerView.Adapter<Cat
 
     private var mCategoryList: ArrayList<CategoryVO> = arrayListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.viewholder_category,parent,false)
-
-        return CategoryViewHolder(view, delegate)
+        lateinit var itemView : View
+        when(viewType){
+            R.layout.view_category_clear ->{
+                itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_category_clear,parent,false)
+            }
+            else -> {
+                itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_holder_category,parent,false)
+            }
+        }
+        return CategoryViewHolder(itemView, delegate)
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        if(mCategoryList.isNotEmpty()){
-            holder.bind(mCategoryList[position])
-        }
+            if(mCategoryList.size > 1 && position != 0){
+                holder.bind(mCategoryList[position])
+            }
+
     }
 
     override fun getItemCount(): Int {
         return mCategoryList.size
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return when(position){
+            0 -> R.layout.view_category_clear
+            else -> R.layout.view_holder_category
+        }
+    }
+
     fun setNewData(categoryList: ArrayList<CategoryVO>){
+        categoryList.add(0,CategoryVO(""))
         mCategoryList = categoryList
         notifyDataSetChanged()
     }
@@ -43,17 +58,17 @@ class CategoryAdapter(val delegate: CategoryDelegate) : RecyclerView.Adapter<Cat
         mCategoryList.forEach {
             it.isSelected = false
         }
-        notifyItemRangeChanged(0,mCategoryList.size)
+        notifyItemRangeChanged(1,mCategoryList.size)
 
         categoryVO.isSelected = true
-        mCategoryList.add(0, categoryVO)
-        notifyItemInserted(0)
+        mCategoryList.add(1, categoryVO)
+        notifyItemInserted(1)
     }
 
     fun clearItem(){
         mCategoryList.forEach {
             it.isSelected = false
         }
-        notifyItemRangeChanged(0,mCategoryList.size)
+        notifyItemRangeChanged(1,mCategoryList.size)
     }
 }

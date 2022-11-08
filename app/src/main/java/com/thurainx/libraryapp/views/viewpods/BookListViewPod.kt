@@ -38,7 +38,6 @@ class BookListViewPod @JvmOverloads constructor(
 
     fun updateData(categoryVO: CategoryVO){
         mCategoryAdapter.updateItem(categoryVO)
-        btnCategoryClear.visibility = View.VISIBLE
     }
 
     fun clearData(){
@@ -48,16 +47,7 @@ class BookListViewPod @JvmOverloads constructor(
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-
-        setupBtnClear()
-
     }
 
-    private fun setupBtnClear() {
-        btnCategoryClear.visibility = View.VISIBLE
-        btnCategoryClear.setOnClickListener {
-            clearData()
-            btnCategoryClear.visibility = View.GONE
-        }
-    }
+
 }

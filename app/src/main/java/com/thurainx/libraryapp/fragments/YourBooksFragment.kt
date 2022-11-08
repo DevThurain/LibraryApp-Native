@@ -34,4 +34,8 @@ class YourBooksFragment : Fragment(), CategoryDelegate {
     override fun onTapCategory(categoryVO: CategoryVO) {
         vpYourBooks.updateData(categoryVO)
     }
+
+    override fun onTapClearCategory() {
+        vpYourBooks.clearData()
+    }
 }
