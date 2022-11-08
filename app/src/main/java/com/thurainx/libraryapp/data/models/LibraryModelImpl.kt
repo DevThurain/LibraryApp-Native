@@ -3,19 +3,23 @@ package com.thurainx.libraryapp.data.models
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.thurainx.libraryapp.data.vos.BookListVO
+import com.thurainx.libraryapp.data.vos.BookVO
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.lang.Exception
 
 object LibraryModelImpl : BasedModel(), LibraryModel {
 
 
-    override fun getBookLists(onFail: (String) -> Unit): LiveData<List<BookListVO>>? {
+    override fun getBookListsFromDatabase(onFail: (String) -> Unit): LiveData<List<BookListVO>>? {
         mTheLibraryApi.getBookList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ response ->
-                response.results.lists?.forEach {
-                    Log.d("bookList",it.listName.toString())
+                response.results.lists?.forEach { bookList ->
+                    bookList.books?.forEach { book ->
+                        book.bookListName = bookList.listName.toString()
+                    }
                 }
                 response.results.lists?.let {
                     mLibraryDatabase?.bookListDao()?.insertAllBookList(bookList = it)
@@ -27,4 +31,18 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
 
         return mLibraryDatabase?.bookListDao()?.getAllBookList()
     }
+
+    // recent book
+    override fun insertRecentBookToDatabase(bookVO: BookVO) {
+        mLibraryDatabase?.recentBookDao()?.insertSingleBook(bookVO)
+    }
+
+    override fun getRecentBookByNameFromDatabase(bookName: String): LiveData<BookVO>? {
+        return mLibraryDatabase?.recentBookDao()?.getRecentBookByName(bookName)
+    }
+
+    override fun getRecentBookListFromDatabase(): LiveData<List<BookVO>>? {
+        return mLibraryDatabase?.recentBookDao()?.getRecentBookList()
+    }
+
 }

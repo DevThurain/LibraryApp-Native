@@ -9,7 +9,7 @@
     <com.thurainx.libraryapp.views.components.RoundedImageView
         android:id="@+id/ivBookCover"
         android:layout_width="150dp"
-        android:layout_height="230dp"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
         app:cornerRadius="@dimen/margin_medium_2"
         app:srcCompat="@drawable/dummy_book" />

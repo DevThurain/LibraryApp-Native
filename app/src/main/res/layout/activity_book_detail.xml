@@ -19,6 +19,7 @@
 
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnMovieDetailBack"
                 android:layout_width="@dimen/margin_large"
                 android:layout_height="@dimen/margin_large"
                 android:layout_gravity="center_vertical"
@@ -669,11 +670,6 @@
 
 
         </LinearLayout>
-
-
-
-
-
 
 
 

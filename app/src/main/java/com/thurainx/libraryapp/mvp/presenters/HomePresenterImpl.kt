@@ -8,7 +8,7 @@ import com.thurainx.libraryapp.data.vos.BookListVO
 import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.mvp.views.HomeView
 
-class HomePresenterImpl: ViewModel(),HomePresenter {
+class HomePresenterImpl : ViewModel(), HomePresenter {
     // view
     var mHomeView: HomeView? = null
 
@@ -20,23 +20,34 @@ class HomePresenterImpl: ViewModel(),HomePresenter {
     }
 
     override fun onUiReady(owner: LifecycleOwner) {
-        mLibraryModel.getBookLists {
+        mLibraryModel.getBookListsFromDatabase {
             mHomeView?.showErrorMessage(it)
-        }?.observe(owner){
+        }?.observe(owner) {
             mHomeView?.showBookLists(it)
         }
+
+        mLibraryModel.getRecentBookListFromDatabase()
+            ?.observe(owner){
+                mHomeView?.showRecentBookList(it.reversed())
+            }
     }
 
     override fun onTapBook(bookVO: BookVO) {
-        Log.d("tap","tap book")
+        mLibraryModel.insertRecentBookToDatabase(bookVO)
+        mHomeView?.navigateToBookDetail(bookVO)
     }
 
     override fun onTapMoreBooks(bookList: BookListVO) {
-        Log.d("tap","tap more books")
+        Log.d("tap", "tap more books")
 
     }
 
     override fun onTapSearch() {
         mHomeView?.navigateToSearch()
+    }
+
+    override fun onTapRecentBook(bookVO: BookVO) {
+        mLibraryModel.insertRecentBookToDatabase(bookVO)
+        mHomeView?.navigateToBookDetail(bookVO)
     }
 }

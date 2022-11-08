@@ -1,14 +1,20 @@
 package com.thurainx.libraryapp.fragments
 
+import alirezat775.lib.carouselview.Carousel
+import alirezat775.lib.carouselview.CarouselListener
+import alirezat775.lib.carouselview.CarouselView
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.thurainx.libraryapp.R
+import com.thurainx.libraryapp.activities.BookDetailActivity
 import com.thurainx.libraryapp.adapters.BookListAdapter
+import com.thurainx.libraryapp.adapters.RecentBookAdapter
 import com.thurainx.libraryapp.data.models.LibraryModelImpl
 import com.thurainx.libraryapp.data.vos.BookListVO
 import com.thurainx.libraryapp.data.vos.BookVO
@@ -25,8 +31,11 @@ class HomeFragment : Fragment(), HomeView {
     lateinit var bookTypeViewPod: BookTypeViewPod
 
     lateinit var mBookListAdapter: BookListAdapter
+    lateinit var mRecentBookAdapter: RecentBookAdapter
 
     lateinit var mHomePresenter: HomePresenterImpl
+
+    lateinit var recentBookCarousel: Carousel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,6 +56,7 @@ class HomeFragment : Fragment(), HomeView {
 
         setupViewPods(view)
         setupBookListsRecyclerView()
+        setupRecentBookRecyclerView()
 
         mHomePresenter.onUiReady(this)
 
@@ -62,13 +72,22 @@ class HomeFragment : Fragment(), HomeView {
         rvBookList.adapter = mBookListAdapter
     }
 
+    private fun setupRecentBookRecyclerView(){
+        mRecentBookAdapter = RecentBookAdapter(mHomePresenter)
+        recentBookCarousel = Carousel(requireActivity() as AppCompatActivity, rvRecentBooks, mRecentBookAdapter)
+        recentBookCarousel.setOrientation(CarouselView.HORIZONTAL, false)
+        recentBookCarousel.scaleView(true)
+
+
+    }
+
 
     private fun setupViewPods(view: View) {
         bookTypeViewPod = view.vpBookTypeHome as BookTypeViewPod
     }
 
     override fun showRecentBookList(bookList: List<BookVO>) {
-
+        mRecentBookAdapter.setNewData(bookList)
     }
 
     override fun showBookLists(bookLists: List<BookListVO>) {
@@ -80,8 +99,9 @@ class HomeFragment : Fragment(), HomeView {
 
     }
 
-    override fun navigateToBookDetail() {
-
+    override fun navigateToBookDetail(book : BookVO) {
+        val intent = BookDetailActivity.getIntent(requireActivity(),book.title)
+        startActivity(intent)
     }
 
     override fun navigateToMoreBook(bookList: BookListVO) {

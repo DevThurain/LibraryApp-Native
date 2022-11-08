@@ -76,4 +76,8 @@ dependencies {
     // recyclerview animation
     implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
 
+    // carousel
+    implementation 'com.github.alirezat775:carousel-view:1.1.1'
+
+
 }

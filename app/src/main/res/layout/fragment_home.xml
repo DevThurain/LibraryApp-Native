@@ -23,11 +23,14 @@
                 android:layout_marginHorizontal="@dimen/margin_medium_2"
                 android:layout_marginTop="@dimen/margin_medium_2" />
 
-            <View
+            <alirezat775.lib.carouselview.CarouselView
                 android:id="@+id/rvRecentBooks"
+                app:reverseLayout="true"
                 android:layout_width="match_parent"
+                android:layout_marginVertical="@dimen/margin_large"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/vpHomeSearch"
-                android:layout_height="150dp" />
+                />
 
             <include
                 android:id="@+id/vpBookTypeHome"
@@ -40,10 +43,10 @@
                 android:id="@+id/rvBookList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@id/vpBookTypeHome"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="12"
-                tools:listitem="@layout/view_holder_book_list"
-                android:layout_below="@id/vpBookTypeHome"/>
+                tools:listitem="@layout/view_holder_book_list" />
 
 
         </RelativeLayout>

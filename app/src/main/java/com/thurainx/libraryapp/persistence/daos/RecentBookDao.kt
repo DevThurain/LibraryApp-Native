@@ -13,6 +13,9 @@ interface RecentBookDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSingleBook(bookVO: BookVO)
 
+    @Query("SELECT * FROM books WHERE title = :bookName")
+    fun getRecentBookByName(bookName: String): LiveData<BookVO>
+
     @Query("SELECT * FROM books")
     fun getRecentBookList(): LiveData<List<BookVO>>
 

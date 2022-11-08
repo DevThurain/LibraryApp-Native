@@ -7,6 +7,6 @@ interface HomeView : BasedView {
     fun showRecentBookList(bookList: List<BookVO>)
     fun showBookLists(bookLists: List<BookListVO>)
     fun navigateToSearch()
-    fun navigateToBookDetail()
+    fun navigateToBookDetail(book: BookVO)
     fun navigateToMoreBook(bookList: BookListVO)
 }
