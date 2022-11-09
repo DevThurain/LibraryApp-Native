@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AddToShelfActivity">
+
+    <ImageView
+        android:id="@+id/ivAddToShelClose"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:src="@drawable/ic_chevron_left" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAddToShelfTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ivAddToShelClose"
+        android:layout_alignBottom="@id/ivAddToShelClose"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="@string/lbl_add_to_shelves"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_regular_2x_medium" />
+
+    <ImageView
+        android:id="@+id/ivAddToShelSave"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/tvAddToShelfTitle"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:src="@drawable/ic_done" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAddToShelf"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvAddToShelfTitle"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin_medium_2"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="12"
+        tools:listitem="@layout/view_holder_add_to_shelf" />
+
+</RelativeLayout>

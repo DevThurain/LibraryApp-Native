@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.thurainx.libraryapp.R
+import com.thurainx.libraryapp.activities.AddToShelfActivity
 import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.data.vos.CategoryVO
 import com.thurainx.libraryapp.delegate.CategoryDelegate
@@ -69,6 +70,11 @@ class YourBooksFragment : Fragment(), YourBooksView {
 
     override fun showBookInfoDialog(bookVO: BookVO) {
         vpYourBooks.showBookInfoDialog(bookVO)
+    }
+
+    override fun navigateToAddToShelf(bookName: String) {
+        val intent = AddToShelfActivity.getIntent(requireActivity(),bookName)
+        startActivity(intent)
     }
 
     override fun showErrorMessage(message: String) {

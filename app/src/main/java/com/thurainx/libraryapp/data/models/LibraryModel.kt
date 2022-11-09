@@ -19,6 +19,9 @@ interface LibraryModel {
 
     fun getRecentBookByNameFromDatabase(bookName: String): LiveData<BookVO>?
 
+    fun getRecentBookByNameFromDatabaseOneTime(bookName: String): BookVO?
+
+
     fun getRecentBookListFromDatabase(): LiveData<List<BookVO>>?
 
     fun getRecentBookListFromDatabaseOneTime(): List<BookVO>?
@@ -35,6 +38,8 @@ interface LibraryModel {
     fun insertShelfToDatabase(shelfVO: ShelfVO)
 
     fun getAllShelves() : LiveData<List<ShelfVO>>?
+
+    fun insertShelfListToDatabase(shelfList: List<ShelfVO>)
 
 
 }

@@ -97,7 +97,7 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
     }
 
     override fun onAddToShelf(bookVO: BookVO) {
-        mYourBooksView?.showErrorMessage("add to shelf")
+        mYourBooksView?.navigateToAddToShelf(bookVO.title)
     }
 
     override fun onRemoveFromLibrary(bookVO: BookVO) {

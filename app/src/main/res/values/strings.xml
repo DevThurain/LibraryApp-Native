@@ -10,4 +10,5 @@
     <string name="lbl_ratings_and_reviews">Ratings and reviews</string>
     <string name="lbl_create_new">Create new</string>
     <string name="lbl_shelf_name">Shelf name</string>
+    <string name="lbl_add_to_shelves">Add to shelves</string>
 </resources>

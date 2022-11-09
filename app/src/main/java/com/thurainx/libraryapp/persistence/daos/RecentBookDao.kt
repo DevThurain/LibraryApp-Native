@@ -16,6 +16,9 @@ interface RecentBookDao {
     @Query("SELECT * FROM books WHERE title = :bookName")
     fun getRecentBookByName(bookName: String): LiveData<BookVO>
 
+    @Query("SELECT * FROM books WHERE title = :bookName")
+    fun getRecentBookByNameOneTime(bookName: String): BookVO
+
     @Query("SELECT * FROM books")
     fun getRecentBookList(): LiveData<List<BookVO>>
 
