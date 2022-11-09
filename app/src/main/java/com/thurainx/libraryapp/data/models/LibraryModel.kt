@@ -21,7 +21,15 @@ interface LibraryModel {
 
     fun getRecentBookListFromDatabase(): LiveData<List<BookVO>>?
 
+    fun getRecentBookListFromDatabaseOneTime(): List<BookVO>?
+
+
     fun getAllRecentBookByCategory(category: String): LiveData<List<BookVO>>?
+
+    fun getAllRecentBookByCategoryOneTime(category: String): List<BookVO>?
+
+
+    fun deleteRecentBookByName(bookName: String)
 
     // Shelves
     fun insertShelfToDatabase(shelfVO: ShelfVO)

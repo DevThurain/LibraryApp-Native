@@ -19,8 +19,14 @@ interface RecentBookDao {
     @Query("SELECT * FROM books")
     fun getRecentBookList(): LiveData<List<BookVO>>
 
+    @Query("SELECT * FROM books")
+    fun getRecentBookListOneTime():List<BookVO>
+
     @Query("SELECT * FROM books WHERE book_list_name = :category")
     fun getAllRecentBookByCategory(category: String): LiveData<List<BookVO>>
+
+    @Query("SELECT * FROM books WHERE book_list_name = :category")
+    fun getAllRecentBookByCategoryOneTime(category: String): List<BookVO>
 
 
 //
@@ -44,6 +50,9 @@ interface RecentBookDao {
 
     @Query("DELETE FROM books")
     fun deleteAllRecentBooks()
+
+    @Query("DELETE FROM books WHERE title = :name")
+    fun deleteRecentBookByName(name: String)
 
 }
 

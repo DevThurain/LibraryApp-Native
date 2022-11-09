@@ -12,6 +12,7 @@ import com.thurainx.libraryapp.mvp.views.BookDetailView
 import com.thurainx.libraryapp.mvp.views.HomeView
 import com.thurainx.libraryapp.mvp.views.YourBooksView
 import com.thurainx.libraryapp.utils.SortType
+import okhttp3.internal.cacheGet
 
 class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
     // view
@@ -33,36 +34,58 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
 
     override fun onUiReady(owner: LifecycleOwner) {
         lifecycleOwner = owner
+
+
         mLibraryModel.getRecentBookListFromDatabase()
             ?.observe(owner) { bookList ->
                 val categoryList: ArrayList<CategoryVO> = arrayListOf()
                 bookList.forEach {
-                    categoryList.add(CategoryVO(listName = it.bookListName))
+                    if(selectedCategory == it.bookListName){
+                        categoryList.add(CategoryVO(listName = it.bookListName, true))
+                    }else{
+                        categoryList.add(CategoryVO(listName = it.bookListName))
+                    }
+
                 }
                 mYourBooksView?.showCategoryList(categoryList.toSet().toList())
-                mYourBooksView?.showBookList(bookList)
+
+                if(selectedCategory.isNotEmpty()){
+                    onTapCategory(CategoryVO(listName = selectedCategory,true))
+                }else{
+                    mYourBooksView?.showBookList(bookList)
+                }
 
             }
+
+
     }
 
     override fun onTapCategory(categoryVO: CategoryVO) {
         selectedCategory = categoryVO.listName
         mYourBooksView?.onTapCategory(categoryVO)
 
-        mLibraryModel.getAllRecentBookByCategory(selectedCategory)
-            ?.observe(lifecycleOwner) { bookList ->
+//        mLibraryModel.getAllRecentBookByCategory(selectedCategory)
+//            ?.observe(lifecycleOwner) { bookList ->
+//                mYourBooksView?.showBookList(bookList)
+//            }
 
-                mYourBooksView?.showBookList(bookList)
-            }
+        val bookList = mLibraryModel.getAllRecentBookByCategoryOneTime(category = categoryVO.listName) ?: listOf()
+        mYourBooksView?.showBookList(bookList)
+
+
     }
 
     override fun onTapClearCategory() {
         selectedCategory = ""
         mYourBooksView?.onTapClearCategory()
-        mLibraryModel.getRecentBookListFromDatabase()
-            ?.observe(lifecycleOwner) { bookList ->
-                mYourBooksView?.showBookList(bookList)
-            }
+//        mLibraryModel.getRecentBookListFromDatabase()
+//            ?.observe(lifecycleOwner) { bookList ->
+//                mYourBooksView?.showBookList(bookList)
+//            }
+
+        val bookList = mLibraryModel.getRecentBookListFromDatabaseOneTime() ?: listOf()
+        mYourBooksView?.showBookList(bookList)
+
     }
 
     override fun onTapBook(bookVO: BookVO) {
@@ -78,8 +101,13 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
     }
 
     override fun onRemoveFromLibrary(bookVO: BookVO) {
+        if(selectedCategory.isNotEmpty()){
+            if(mLibraryModel.getAllRecentBookByCategoryOneTime(selectedCategory)?.size == 1){
+                onTapClearCategory()
+            }
+        }
+        mLibraryModel.deleteRecentBookByName(bookName = bookVO.title)
 
     }
-
 
 }

@@ -48,9 +48,21 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
         return mLibraryDatabase?.recentBookDao()?.getRecentBookList()
     }
 
+    override fun getRecentBookListFromDatabaseOneTime(): List<BookVO>? {
+        return mLibraryDatabase?.recentBookDao()?.getRecentBookListOneTime()
+    }
+
     override fun getAllRecentBookByCategory(category: String): LiveData<List<BookVO>>? {
         return mLibraryDatabase?.recentBookDao()?.getAllRecentBookByCategory(category)
 
+    }
+
+    override fun getAllRecentBookByCategoryOneTime(category: String): List<BookVO>? {
+        return mLibraryDatabase?.recentBookDao()?.getAllRecentBookByCategoryOneTime(category)
+    }
+
+    override fun deleteRecentBookByName(bookName: String) {
+        mLibraryDatabase?.recentBookDao()?.deleteRecentBookByName(bookName)
     }
 
     override fun insertShelfToDatabase(shelfVO: ShelfVO) {

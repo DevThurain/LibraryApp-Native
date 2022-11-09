@@ -234,6 +234,7 @@ class BookListViewPod @JvmOverloads constructor(
         }
 
         dialog.layoutRemoveFromLibrary.setOnClickListener {
+            smartBookDelegate?.onRemoveFromLibrary(bookVO)
             dialog.dismiss()
         }
     }
