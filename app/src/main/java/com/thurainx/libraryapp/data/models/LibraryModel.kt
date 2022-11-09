@@ -4,14 +4,17 @@ import androidx.lifecycle.LiveData
 import com.thurainx.libraryapp.data.vos.BookListVO
 import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.data.vos.CategoryVO
+import com.thurainx.libraryapp.data.vos.ShelfVO
 import io.reactivex.rxjava3.core.Observable
 
 interface LibraryModel {
 
+    // NY Book List
     fun getBookListsFromDatabase(
         onFail: (String) -> Unit
     ): LiveData<List<BookListVO>>?
 
+    // Recent Book List
     fun insertRecentBookToDatabase(bookVO: BookVO)
 
     fun getRecentBookByNameFromDatabase(bookName: String): LiveData<BookVO>?
@@ -20,7 +23,10 @@ interface LibraryModel {
 
     fun getAllRecentBookByCategory(category: String): LiveData<List<BookVO>>?
 
+    // Shelves
+    fun insertShelfToDatabase(shelfVO: ShelfVO)
 
+    fun getAllShelves() : LiveData<List<ShelfVO>>?
 
 
 }

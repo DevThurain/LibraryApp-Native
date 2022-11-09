@@ -67,6 +67,10 @@ class YourBooksFragment : Fragment(), YourBooksView {
         vpYourBooks.setupBookList(bookList)
     }
 
+    override fun showBookInfoDialog(bookVO: BookVO) {
+        vpYourBooks.showBookInfoDialog(bookVO)
+    }
+
     override fun showErrorMessage(message: String) {
         Snackbar.make(requireView(),message,Snackbar.LENGTH_SHORT).show()
     }

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.thurainx.libraryapp.data.vos.BookListVO
 import com.thurainx.libraryapp.data.vos.BookVO
+import com.thurainx.libraryapp.data.vos.ShelfVO
 import com.thurainx.libraryapp.utils.DateUtils
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -50,6 +51,14 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
     override fun getAllRecentBookByCategory(category: String): LiveData<List<BookVO>>? {
         return mLibraryDatabase?.recentBookDao()?.getAllRecentBookByCategory(category)
 
+    }
+
+    override fun insertShelfToDatabase(shelfVO: ShelfVO) {
+         mLibraryDatabase?.shelfDao()?.insertShelf(shelfVO)
+    }
+
+    override fun getAllShelves(): LiveData<List<ShelfVO>>? {
+        return mLibraryDatabase?.shelfDao()?.getAllShelves()
     }
 
 }

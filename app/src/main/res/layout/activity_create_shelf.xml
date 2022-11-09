@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.CreateShelfActivity">
+
+    <ImageView
+        android:id="@+id/ivCreateShelfClose"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:src="@drawable/ic_chevron_left" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBookListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ivCreateShelfClose"
+        android:layout_alignBottom="@id/ivCreateShelfClose"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="Create Shelf"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_regular_2x_medium" />
+
+    <ImageView
+        android:id="@+id/ivCreateShelfDone"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:src="@drawable/ic_done" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutShelfName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivCreateShelfClose"
+        android:layout_marginHorizontal="@dimen/text_regular_2x"
+        android:layout_marginVertical="@dimen/margin_large"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
+        app:boxStrokeColor="@color/search_box_stroke_color"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtShelfName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="@string/lbl_shelf_name"
+            android:textColorHint="@color/light_grey"
+            android:textSize="@dimen/text_heading_1x"
+            android:imeOptions="actionDone"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:singleLine="true"
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/textInputLayoutShelfName"
+        android:background="@color/light_grey_30percent"
+        android:layout_marginVertical="@dimen/margin_medium"
+        />
+
+
+</RelativeLayout>

@@ -9,15 +9,17 @@
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/drawable/bg_search.xml" value="0.2" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/drawable/ic_home_outline.xml" value="0.196" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/activity_book_detail.xml" value="0.264" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/activity_create_shelf.xml" value="0.2" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/fragment_home.xml" value="0.1721014492753623" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/fragment_library.xml" value="0.1721014492753623" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/fragment_your_books.xml" value="0.1802536231884058" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/fragment_your_shelves.xml" value="0.1802536231884058" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/layout_book_gridview.xml" value="0.2" />
-        <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/layout_book_large_gridview.xml" value="0.1802536231884058" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/layout_book_large_gridview.xml" value="0.2" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/layout_book_listview.xml" value="0.264" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/layout_book_small_gridview.xml" value="0.1802536231884058" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/sheet_dialog_book_info.xml" value="0.1802536231884058" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/sheet_dialog_sort.xml" value="0.2" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/sheet_sorting.xml" value="0.1802536231884058" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/view_category_clear.xml" value="0.12158054711246201" />
@@ -26,10 +28,12 @@
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/view_holder_category.xml" value="0.1802536231884058" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/view_holder_category_clear.xml" value="0.1802536231884058" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/view_holder_recent_book.xml" value="0.1802536231884058" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/view_holder_shelf.xml" value="0.1802536231884058" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/view_pod_book_list.xml" value="0.4" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/view_pod_book_type.xml" value="0.1721014492753623" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/view_pod_search.xml" value="0.264" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/viewholder_category.xml" value="0.536" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/layout/viewholder_shelf.xml" value="0.2" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/LibraryApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25" />
       </map>
     </option>

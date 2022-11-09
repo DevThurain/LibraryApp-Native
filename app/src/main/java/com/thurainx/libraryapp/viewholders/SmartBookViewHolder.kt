@@ -21,6 +21,25 @@ class SmartBookViewHolder(itemView: View, delegate: SmartBookDelegate, private v
                 delegate.onTapBook(it)
             }
         }
+
+        itemView.ivBookListViewMore?.setOnClickListener {
+            mBookVO?.let {
+                delegate.onTapMore(it)
+            }
+        }
+
+        itemView.ivBookSmallGridViewMore?.setOnClickListener {
+            mBookVO?.let {
+                delegate.onTapMore(it)
+            }
+        }
+
+        itemView.ivBookLargeGridViewMore?.setOnClickListener {
+            mBookVO?.let {
+                delegate.onTapMore(it)
+            }
+        }
+
     }
 
     fun bind(bookVO: BookVO){

@@ -8,4 +8,6 @@
     <string name="lbl_search_play_books">Search Play Books</string>
     <string name="lbl_about_this_ebook">About this ebook</string>
     <string name="lbl_ratings_and_reviews">Ratings and reviews</string>
+    <string name="lbl_create_new">Create new</string>
+    <string name="lbl_shelf_name">Shelf name</string>
 </resources>

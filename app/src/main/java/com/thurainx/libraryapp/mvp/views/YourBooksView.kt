@@ -11,6 +11,8 @@ interface YourBooksView : BasedView {
 
     fun showBookList(bookList: List<BookVO>)
 
+    fun showBookInfoDialog(bookVO: BookVO)
+
 
 
 }

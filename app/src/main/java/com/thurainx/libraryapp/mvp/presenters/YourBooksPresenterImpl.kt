@@ -70,6 +70,14 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
     }
 
     override fun onTapMore(bookVO: BookVO) {
+        mYourBooksView?.showBookInfoDialog(bookVO)
+    }
+
+    override fun onAddToShelf(bookVO: BookVO) {
+        mYourBooksView?.showErrorMessage("add to shelf")
+    }
+
+    override fun onRemoveFromLibrary(bookVO: BookVO) {
 
     }
 

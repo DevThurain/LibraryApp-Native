@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.thurainx.libraryapp.R
@@ -23,6 +24,7 @@ import com.thurainx.libraryapp.delegate.SortingDelegate
 import com.thurainx.libraryapp.utils.ListType
 import com.thurainx.libraryapp.utils.SortType
 import com.thurainx.libraryapp.views.components.GridSpacingItemDecoration
+import kotlinx.android.synthetic.main.sheet_dialog_book_info.*
 import kotlinx.android.synthetic.main.sheet_dialog_grid.*
 import kotlinx.android.synthetic.main.sheet_dialog_grid.view.*
 import kotlinx.android.synthetic.main.sheet_dialog_sort.*
@@ -112,6 +114,8 @@ class BookListViewPod @JvmOverloads constructor(
         mSmartBookAdapter.setNewData(bookList)
 
     }
+
+
 
 
     override fun onFinishInflate() {
@@ -211,6 +215,27 @@ class BookListViewPod @JvmOverloads constructor(
         })
 
         dialog.show()
+    }
+
+    fun showBookInfoDialog(bookVO: BookVO){
+        val dialog = BottomSheetDialog(context)
+        dialog.setContentView(R.layout.sheet_dialog_book_info)
+        dialog.show()
+
+        Glide.with(context)
+            .load(bookVO.bookImage)
+            .into(dialog.ivBookInfoCover)
+
+        dialog.tvBookInfoName.text = bookVO.title
+
+        dialog.layoutAddToShelf.setOnClickListener {
+            smartBookDelegate?.onAddToShelf(bookVO)
+            dialog.dismiss()
+        }
+
+        dialog.layoutRemoveFromLibrary.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 
     private fun doSorting(){

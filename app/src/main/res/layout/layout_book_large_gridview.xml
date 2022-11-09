@@ -46,10 +46,10 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/tvBookLargeGridViewMore"
+        android:id="@+id/ivBookLargeGridViewMore"
         android:layout_width="@dimen/margin_large"
         android:layout_height="@dimen/margin_large"
-        android:layout_marginEnd="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_small"
         android:layout_alignParentEnd="true"
         android:tint="@color/white"
         app:srcCompat="@drawable/ic_more_horizotal" />
