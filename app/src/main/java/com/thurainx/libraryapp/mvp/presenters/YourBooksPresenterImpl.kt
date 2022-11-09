@@ -21,9 +21,7 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
     private var mLibraryModel = LibraryModelImpl
 
     // state
-    private val mutableBookList: MutableList<BookVO> = mutableListOf()
     private var selectedCategory = ""
-    private var selectedSortType = SortType.BOOK_TITLE
 
     // lifecycle owner
     lateinit var lifecycleOwner: LifecycleOwner
@@ -42,12 +40,7 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
                     categoryList.add(CategoryVO(listName = it.bookListName))
                 }
                 mYourBooksView?.showCategoryList(categoryList.toSet().toList())
-
-                mutableBookList.clear()
-                mutableBookList.addAll(bookList)
-
-                doSorting()
-                mYourBooksView?.showBookList(mutableBookList)
+                mYourBooksView?.showBookList(bookList)
 
             }
     }
@@ -58,19 +51,18 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
 
         mLibraryModel.getAllRecentBookByCategory(selectedCategory)
             ?.observe(lifecycleOwner) { bookList ->
-                mutableBookList.clear()
-                mutableBookList.addAll(bookList)
 
-
-                doSorting()
-
-                mYourBooksView?.showBookList(mutableBookList)
+                mYourBooksView?.showBookList(bookList)
             }
     }
 
     override fun onTapClearCategory() {
         selectedCategory = ""
         mYourBooksView?.onTapClearCategory()
+        mLibraryModel.getRecentBookListFromDatabase()
+            ?.observe(lifecycleOwner) { bookList ->
+                mYourBooksView?.showBookList(bookList)
+            }
     }
 
     override fun onTapBook(bookVO: BookVO) {
@@ -79,24 +71,6 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
 
     override fun onTapMore(bookVO: BookVO) {
 
-    }
-
-    override fun onTapSort(sortType: SortType) {
-        selectedSortType = sortType
-
-        doSorting()
-        mutableBookList.forEach { book ->
-            Log.d("bookList",book.createdDate.toString())
-        }
-        mYourBooksView?.showBookList(mutableBookList)
-    }
-
-    private fun doSorting(){
-        when(selectedSortType){
-            SortType.BOOK_TITLE -> mutableBookList.sortBy { it.title.lowercase() }
-            SortType.AUTHOR -> mutableBookList.sortBy { it.author?.lowercase() }
-            SortType.DATE -> mutableBookList.sortBy { it.dateMillis }
-        }
     }
 
 

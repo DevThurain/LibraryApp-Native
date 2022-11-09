@@ -48,7 +48,7 @@ class YourBooksFragment : Fragment(), YourBooksView {
 
     private fun setupBookListViewPod(){
         vpYourBooks = view?.vpYourBooks as BookListViewPod
-        vpYourBooks.setupViewPod(mPresenter,mPresenter, mPresenter)
+        vpYourBooks.setupViewPod(mPresenter,mPresenter)
     }
 
     override fun showCategoryList(categoryList: List<CategoryVO>) {

@@ -63,13 +63,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSmartBookList"
-            android:layout_below="@id/layoutFilters"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            tools:itemCount="15"
-            tools:listitem="@layout/layout_book_listview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_below="@id/layoutFilters"
+            tools:itemCount="15"
+            tools:listitem="@layout/layout_book_listview" />
 
 
     </RelativeLayout>

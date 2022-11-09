@@ -5,6 +5,6 @@ import com.thurainx.libraryapp.delegate.*
 import com.thurainx.libraryapp.mvp.views.HomeView
 import com.thurainx.libraryapp.mvp.views.YourBooksView
 
-interface YourBooksPresenter: BasedPresenter, CategoryDelegate, SmartBookDelegate, SortingDelegate{
+interface YourBooksPresenter: BasedPresenter, CategoryDelegate, SmartBookDelegate{
     fun initView(view: YourBooksView)
 }

@@ -50,7 +50,7 @@ data class BookVO(
     @PrimaryKey
     @ColumnInfo(name = "title")
     @SerializedName(value = "title")
-    val title: String,
+    var title: String,
 
     @ColumnInfo(name = "updated_date")
     @SerializedName(value = "updated_date")
