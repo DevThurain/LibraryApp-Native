@@ -24,11 +24,14 @@ interface ShelfDao {
     fun getShelfByName(name: String): LiveData<ShelfVO>
 
     @Query("SELECT * FROM shelves WHERE unique_id = :id")
-    fun getShelfById(id: Long): LiveData<ShelfVO>
+    fun getShelfById(id: Long): LiveData<ShelfVO?>
 
 
     @Query("DELETE FROM shelves")
     fun deleteAllShelves()
+
+    @Query("DELETE FROM shelves WHERE unique_id = :id")
+    fun deleteShelfById(id: Long)
 
 }
 

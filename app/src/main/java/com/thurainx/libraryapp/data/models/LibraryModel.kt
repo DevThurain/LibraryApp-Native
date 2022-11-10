@@ -41,7 +41,9 @@ interface LibraryModel {
 
     fun insertShelfListToDatabase(shelfList: List<ShelfVO>)
 
-    fun getShelfById(id: Long) : LiveData<ShelfVO>?
+    fun getShelfById(id: Long) : LiveData<ShelfVO?>?
+
+    fun deleteShelf(id: Long)
 
 
 }

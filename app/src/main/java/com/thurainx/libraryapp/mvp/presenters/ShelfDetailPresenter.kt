@@ -10,5 +10,8 @@ import com.thurainx.libraryapp.mvp.views.YourBooksView
 interface ShelfDetailPresenter: BasedPresenter, CategoryDelegate, SmartBookDelegate{
     fun initView(view: ShelfDetailView)
     fun onUiReadyShelfDetail(owner: LifecycleOwner, id: Long)
+    fun onTapShelfMore()
+    fun onRenameShelf(updatedName: String)
+    fun onDeleteShelf()
 
 }

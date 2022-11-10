@@ -34,25 +34,52 @@ class ShelfDetailPresenterImpl : ViewModel(), ShelfDetailPresenter {
     }
 
     override fun onUiReadyShelfDetail(owner: LifecycleOwner, id: Long) {
-        mLibraryModel.getShelfById(id)?.observe(owner){ shelf ->
-            selectedShelf = shelf
-            mShelfDetailView?.showShelfDetail(shelf)
+        mLibraryModel.getShelfById(id)?.observe(owner){
+            it?.let { shelf ->
+                selectedShelf = shelf
+                mShelfDetailView?.showShelfDetail(shelf)
 
-            val categoryList: ArrayList<CategoryVO> = arrayListOf()
-            shelf.books.forEach {
-                if(selectedCategory == it.bookListName){
-                    categoryList.add(CategoryVO(listName = it.bookListName, true))
-                }else{
-                    categoryList.add(CategoryVO(listName = it.bookListName))
+                val categoryList: ArrayList<CategoryVO> = arrayListOf()
+                shelf.books.forEach {
+                    if(selectedCategory == it.bookListName){
+                        categoryList.add(CategoryVO(listName = it.bookListName, true))
+                    }else{
+                        categoryList.add(CategoryVO(listName = it.bookListName))
+                    }
+
                 }
+                mShelfDetailView?.showCategoryList(categoryList.toSet().toList())
+                if(selectedCategory.isNotEmpty()){
+                    onTapCategory(CategoryVO(listName = selectedCategory,true))
+                }else{
+                    mShelfDetailView?.showBookList(shelf.books)
+                }
+            }
+        }
+    }
 
+    override fun onTapShelfMore() {
+        selectedShelf?.let {
+            mShelfDetailView?.showShelfUpdateDialog(it)
+        }
+    }
+
+    override fun onRenameShelf(updatedName: String) {
+        val updatedShelf = selectedShelf?.copy(name = updatedName)
+        if(updatedName.isNotEmpty()){
+            updatedShelf?.let {
+                mLibraryModel.insertShelfToDatabase(updatedShelf)
             }
-            mShelfDetailView?.showCategoryList(categoryList.toSet().toList())
-            if(selectedCategory.isNotEmpty()){
-                onTapCategory(CategoryVO(listName = selectedCategory,true))
-            }else{
-                mShelfDetailView?.showBookList(shelf.books)
-            }
+        }else{
+            mShelfDetailView?.showErrorMessage("Shelf name cannot be empty.")
+        }
+
+    }
+
+    override fun onDeleteShelf() {
+        selectedShelf?.let {
+            mLibraryModel.deleteShelf(it.uniqueId)
+            mShelfDetailView?.navigateBack()
 
         }
     }
@@ -86,7 +113,7 @@ class ShelfDetailPresenterImpl : ViewModel(), ShelfDetailPresenter {
     }
 
     override fun onTapMore(bookVO: BookVO) {
-//        mYourBooksView?.showBookInfoDialog(bookVO)
+//        mShelfDetailView?.showBookInfoDialogForShelfBooks(bookVO)
     }
 
     override fun onAddToShelf(bookVO: BookVO) {

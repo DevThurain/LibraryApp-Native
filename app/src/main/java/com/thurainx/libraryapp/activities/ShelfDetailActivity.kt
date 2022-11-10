@@ -4,7 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.data.vos.BookVO
@@ -14,8 +18,11 @@ import com.thurainx.libraryapp.mvp.presenters.ShelfDetailPresenter
 import com.thurainx.libraryapp.mvp.presenters.ShelfDetailPresenterImpl
 import com.thurainx.libraryapp.mvp.views.ShelfDetailView
 import com.thurainx.libraryapp.views.viewpods.BookListViewPod
+import kotlinx.android.synthetic.main.activity_create_shelf.*
 import kotlinx.android.synthetic.main.activity_shelf_detail.*
 import kotlinx.android.synthetic.main.fragment_your_books.view.*
+import kotlinx.android.synthetic.main.sheet_dialog_book_info.*
+import kotlinx.android.synthetic.main.sheet_shelf_update.*
 
 const val EXTRA_SHELF_ID = "EXTRA_SHELF_ID"
 class ShelfDetailActivity : AppCompatActivity(), ShelfDetailView {
@@ -50,6 +57,22 @@ class ShelfDetailActivity : AppCompatActivity(), ShelfDetailView {
 
     private fun setupListeners(){
 
+        ivShelfDetailMore.setOnClickListener {
+            mPresenter.onTapShelfMore()
+        }
+
+        edtShelfDetailShelfName.setOnEditorActionListener { textView, actionId, keyEvent ->
+            return@setOnEditorActionListener when(actionId){
+                EditorInfo.IME_ACTION_DONE -> {
+                    mPresenter.onRenameShelf(textView.text.toString())
+                    tvShelfDetailName.visibility = View.VISIBLE
+                    textInputLayoutShelfDetailShelfName.visibility = View.INVISIBLE
+                    true
+                }
+                else -> false
+            }
+
+        }
     }
 
     private fun setupViewPod(){
@@ -83,7 +106,31 @@ class ShelfDetailActivity : AppCompatActivity(), ShelfDetailView {
 
     }
 
+    override fun showShelfUpdateDialog(shelfVO: ShelfVO) {
+        val dialog = BottomSheetDialog(this)
+        dialog.setContentView(R.layout.sheet_shelf_update)
+        dialog.show()
+
+        dialog.tvShelfUpdateName.text = shelfVO.name
+
+        dialog.layoutRenameShelf.setOnClickListener {
+            tvShelfDetailName.visibility = View.INVISIBLE
+            textInputLayoutShelfDetailShelfName.visibility = View.VISIBLE
+            edtShelfDetailShelfName.setText(shelfVO.name)
+            dialog.dismiss()
+        }
+
+        dialog.layoutDeleteShelf.setOnClickListener {
+            mPresenter.onDeleteShelf()
+        }
+    }
+
+    override fun navigateBack() {
+        super.onBackPressed()
+    }
+
     override fun showErrorMessage(message: String) {
         Snackbar.make(window.decorView,message,Snackbar.LENGTH_SHORT).show()
     }
+
 }

@@ -14,6 +14,8 @@ interface ShelfDetailView : BasedView {
     fun showShelfDetail(shelfVO: ShelfVO)
 
     fun showBookInfoDialogForShelfBooks(bookVO: BookVO)
+    fun showShelfUpdateDialog(shelfVO: ShelfVO)
+    fun navigateBack()
 
 
 

@@ -82,9 +82,13 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
         mLibraryDatabase?.shelfDao()?.insertShelfList(shelfList)
     }
 
-    override fun getShelfById(id: Long): LiveData<ShelfVO>? {
+    override fun getShelfById(id: Long): LiveData<ShelfVO?>? {
        return mLibraryDatabase?.shelfDao()?.getShelfById(id)
 
+    }
+
+    override fun deleteShelf(id: Long) {
+        mLibraryDatabase?.shelfDao()?.deleteShelfById(id)
     }
 
 
