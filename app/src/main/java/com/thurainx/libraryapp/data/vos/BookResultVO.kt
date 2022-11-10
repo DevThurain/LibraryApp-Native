@@ -11,4 +11,6 @@ data class BookResultVO(
 
     @SerializedName(value = "lists")
     val lists: List<BookListVO>?,
+
+
 )

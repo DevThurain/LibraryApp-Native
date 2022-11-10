@@ -23,7 +23,9 @@ import com.thurainx.libraryapp.utils.KeyboardUtils.hideKeyboard
 import kotlinx.android.synthetic.main.activity_create_shelf.*
 import kotlinx.android.synthetic.main.activity_shelf_detail.*
 import kotlinx.android.synthetic.main.fragment_your_books.view.*
+import kotlinx.android.synthetic.main.sheet_dialog_book_download.*
 import kotlinx.android.synthetic.main.sheet_dialog_book_info.*
+import kotlinx.android.synthetic.main.sheet_dialog_shelf_book.*
 import kotlinx.android.synthetic.main.sheet_shelf_update.*
 
 const val EXTRA_SHELF_ID = "EXTRA_SHELF_ID"
@@ -109,6 +111,21 @@ class ShelfDetailActivity : AppCompatActivity(), ShelfDetailView {
     }
 
     override fun showBookInfoDialogForShelfBooks(bookVO: BookVO) {
+        val dialog = BottomSheetDialog(this)
+        dialog.setContentView(R.layout.sheet_dialog_shelf_book)
+        dialog.show()
+
+        Glide.with(this)
+            .load(bookVO.bookImage ?: R.drawable.dummy_cover)
+            .into(dialog.ivShelfBookCover)
+
+        dialog.tvShelfBookName.text = bookVO.title
+
+        dialog.layoutShelfBookRemove.setOnClickListener {
+            mPresenter.onDeleteShelfBook(bookVO)
+            dialog.dismiss()
+        }
+
 
     }
 

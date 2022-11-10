@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MoreBooksActivity">
+
+    <ImageView
+        android:id="@+id/ivMoreBooksBack"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:src="@drawable/ic_chevron_left" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMoreBooksTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ivMoreBooksBack"
+        android:layout_alignBottom="@id/ivMoreBooksBack"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="Title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_regular_2x_medium" />
+
+    <View
+        android:id="@+id/dividerMoreBooks"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/ivMoreBooksBack"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:background="@color/light_grey_30percent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMoreBooks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/dividerMoreBooks"
+        tools:itemCount="12"
+        tools:listitem="@layout/layout_book_small_gridview" />
+
+
+</RelativeLayout>

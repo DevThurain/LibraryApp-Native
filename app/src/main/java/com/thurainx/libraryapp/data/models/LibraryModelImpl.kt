@@ -34,6 +34,27 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
         return mLibraryDatabase?.bookListDao()?.getAllBookList()
     }
 
+    override fun getBookListByListName(listName: String,onSuccess: (List<BookVO>) -> Unit, onFail: (String) -> Unit) {
+        mTheLibraryApi.getBookListByListName(list = listName)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { response ->
+                    val bookList : ArrayList<BookVO> = arrayListOf()
+                    response.results.forEach {
+                       it.bookDetails?.firstOrNull()?.let { bookVO ->
+                           bookList.add(bookVO)
+                       }
+                    }
+                    onSuccess(bookList)
+                },
+                {
+                    it.localizedMessage?.let { it1 -> onFail(it1.toString()) }
+                }
+            )
+    }
+
+
     // recent book
     override fun insertRecentBookToDatabase(bookVO: BookVO) {
 //        bookVO.dateMillis = DateUtils.convertDateStringToMilli(bookVO.createdDate.toString())

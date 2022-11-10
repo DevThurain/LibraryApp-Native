@@ -3,6 +3,7 @@ package com.thurainx.libraryapp.viewholders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.adapters.VIEW_TYPE_LARGE_GRID
 import com.thurainx.libraryapp.adapters.VIEW_TYPE_LIST
 import com.thurainx.libraryapp.adapters.VIEW_TYPE_SMALL_GRID
@@ -71,7 +72,7 @@ class SmartBookViewHolder(itemView: View, delegate: SmartBookDelegate, private v
 
     private fun bindSmallGridView(bookVO: BookVO){
         Glide.with(itemView.context)
-            .load(bookVO.bookImage)
+            .load(bookVO.bookImage ?: R.drawable.dummy_cover)
             .into(itemView.ivBookSmallGridCover)
 
         itemView.tvBookSmallGridViewTitle.text = bookVO.title

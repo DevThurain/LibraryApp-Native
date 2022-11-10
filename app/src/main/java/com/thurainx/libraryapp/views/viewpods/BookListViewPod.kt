@@ -188,7 +188,7 @@ class BookListViewPod @JvmOverloads constructor(
             }
             SortType.DATE -> {
                 dialog.radioGroupSortType.check(R.id.rbSortDate)
-                btnSelectSorting.text = "Sort By Released Date"
+                btnSelectSorting.text = "Sort By Recently Opened"
             }
 
         }
@@ -205,7 +205,7 @@ class BookListViewPod @JvmOverloads constructor(
                     }
                     R.id.rbSortDate -> {
                         selectedSortType = SortType.DATE
-                        btnSelectSorting.text = "Sort By Released Date"
+                        btnSelectSorting.text = "Sort By Recently Opened"
                     }
                 }
                 showSortedList()

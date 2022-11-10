@@ -88,6 +88,26 @@ class ShelfDetailPresenterImpl : ViewModel(), ShelfDetailPresenter {
         }
     }
 
+    override fun onDeleteShelfBook(bookVO: BookVO) {
+
+        if(selectedCategory.isNotEmpty()){
+            val bookList = selectedShelf?.books?.filter { it.bookListName == selectedCategory } ?: arrayListOf()
+            if(bookList.size == 1){
+                onTapClearCategory()
+            }
+        }
+
+
+        val bookList = selectedShelf?.books?.filter { it.title != bookVO.title } ?: listOf()
+        val shelf = selectedShelf?.copy(books = bookList)
+        shelf?.let {
+            mLibraryModel.insertShelfToDatabase(it)
+        }
+
+
+
+    }
+
 
     override fun onUiReady(owner: LifecycleOwner) {
 
@@ -117,7 +137,7 @@ class ShelfDetailPresenterImpl : ViewModel(), ShelfDetailPresenter {
     }
 
     override fun onTapMore(bookVO: BookVO) {
-//        mShelfDetailView?.showBookInfoDialogForShelfBooks(bookVO)
+        mShelfDetailView?.showBookInfoDialogForShelfBooks(bookVO)
     }
 
 

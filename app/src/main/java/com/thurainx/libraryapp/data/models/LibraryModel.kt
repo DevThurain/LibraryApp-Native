@@ -14,6 +14,12 @@ interface LibraryModel {
         onFail: (String) -> Unit
     ): LiveData<List<BookListVO>>?
 
+    fun getBookListByListName(
+        listName: String,
+        onSuccess: (List<BookVO>) -> Unit,
+        onFail: (String) -> Unit,
+    )
+
     // Recent Book List
     fun insertRecentBookToDatabase(bookVO: BookVO)
 

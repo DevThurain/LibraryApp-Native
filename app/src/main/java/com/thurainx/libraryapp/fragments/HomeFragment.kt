@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.activities.AddToShelfActivity
 import com.thurainx.libraryapp.activities.BookDetailActivity
+import com.thurainx.libraryapp.activities.MoreBooksActivity
 import com.thurainx.libraryapp.adapters.BookListAdapter
 import com.thurainx.libraryapp.adapters.RecentBookAdapter
 import com.thurainx.libraryapp.data.models.LibraryModelImpl
@@ -74,6 +75,8 @@ class HomeFragment : Fragment(), HomeView {
         mHomePresenter.initView(this)
     }
 
+
+
     private fun setupBookListsRecyclerView(){
         mBookListAdapter = BookListAdapter(mHomePresenter,mHomePresenter)
         rvBookList.adapter = mBookListAdapter
@@ -84,7 +87,6 @@ class HomeFragment : Fragment(), HomeView {
         recentBookCarousel = Carousel(requireActivity() as AppCompatActivity, rvRecentBooks, mRecentBookAdapter)
         recentBookCarousel.setOrientation(CarouselView.HORIZONTAL, false)
         recentBookCarousel.scaleView(true)
-
 
     }
 
@@ -146,7 +148,8 @@ class HomeFragment : Fragment(), HomeView {
     }
 
     override fun navigateToMoreBook(bookList: BookListVO) {
-
+        val intent = MoreBooksActivity.getIntent(requireActivity(), listName = bookList.listName.toString(), encodedListName = bookList.listNameEncoded.toString())
+        startActivity(intent)
     }
 
     override fun showErrorMessage(message: String) {

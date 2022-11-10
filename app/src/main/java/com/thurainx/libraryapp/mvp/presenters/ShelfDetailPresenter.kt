@@ -1,6 +1,7 @@
 package com.thurainx.libraryapp.mvp.presenters
 
 import androidx.lifecycle.LifecycleOwner
+import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.data.vos.CategoryVO
 import com.thurainx.libraryapp.delegate.*
 import com.thurainx.libraryapp.mvp.views.HomeView
@@ -14,5 +15,6 @@ interface ShelfDetailPresenter: BasedPresenter, CategoryDelegate, SmartBookDeleg
     fun onTapShelfMore()
     fun onRenameShelf(updatedName: String)
     fun onDeleteShelf()
+    fun onDeleteShelfBook(bookVO: BookVO)
 
 }

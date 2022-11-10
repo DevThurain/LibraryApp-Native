@@ -7,26 +7,16 @@ import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 import com.thurainx.libraryapp.persistence.typeconverters.BookTypeConverter
 
-@Entity(tableName = "bookList")
-@TypeConverters(
-    BookTypeConverter::class
-)
-data class BookListVO(
-    @PrimaryKey
-    @ColumnInfo(name = "list_id")
-    @SerializedName("list_id")
-    val listId: Int,
 
-    @ColumnInfo(name = "list_name_encoded")
+data class MoreBookListVO(
+
     @SerializedName("list_name_encoded")
     val listNameEncoded: String?,
 
-    @ColumnInfo(name = "list_name")
     @SerializedName("list_name")
     val listName: String?,
 
-    @ColumnInfo(name = "books")
-    @SerializedName("books")
-    val books: List<BookVO>?,
+    @SerializedName("book_details")
+    val bookDetails: List<BookVO>?,
 ) {
 }

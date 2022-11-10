@@ -55,7 +55,7 @@ class HomePresenterImpl : ViewModel(), HomePresenter {
     }
 
     override fun onTapMoreBooks(bookList: BookListVO) {
-        Log.d("tap", "tap more books")
+        mHomeView?.navigateToMoreBook(bookList)
 
     }
 
