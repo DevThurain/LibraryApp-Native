@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SearchBookActivity">
+
+    <LinearLayout
+        android:id="@+id/layoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivSearchBack"
+            android:layout_width="@dimen/margin_xlarge"
+            android:layout_height="@dimen/margin_xlarge"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:src="@drawable/ic_chevron_left" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutShelfName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:hintAnimationEnabled="false"
+            android:layout_marginEnd="@dimen/margin_medium"
+            app:hintEnabled="false"
+            app:endIconMode="clear_text"
+            app:boxStrokeColor="@color/book_search_box_stroke_color">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtBookSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:hint="Search Book"
+                android:paddingTop="14dp"
+                android:textColorHint="@color/light_grey"
+                android:textSize="@dimen/text_regular_2x"
+                android:imeOptions="actionDone"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:singleLine="true"
+                />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+<!--        <ImageView-->
+<!--            android:id="@+id/ivSearchClear"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginHorizontal="@dimen/margin_medium_2"-->
+<!--            android:src="@drawable/ic_close" />-->
+
+
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/vpSearchBookType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutSearch"
+        layout="@layout/view_pod_book_type"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchBook"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/vpSearchBookType"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="15"
+        tools:listitem="@layout/layout_book_listview"
+        />
+
+
+
+
+
+</RelativeLayout>

@@ -7,8 +7,9 @@ import com.thurainx.libraryapp.delegate.RecentBookDelegate
 import com.thurainx.libraryapp.delegate.SearchDelegate
 import com.thurainx.libraryapp.mvp.views.HomeView
 
-interface HomePresenter: BasedPresenter, BookDelegate, BookListDelegate, SearchDelegate, RecentBookDelegate{
+interface HomePresenter: BasedPresenter, BookDelegate, BookListDelegate, RecentBookDelegate{
     fun initView(view: HomeView)
+    fun onTapSearch()
     fun onTapAddToShelf(bookVO: BookVO)
     fun onTapAddToLibrary(bookVO: BookVO)
     fun onTapBookInfo(bookVO: BookVO)

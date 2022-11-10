@@ -4,9 +4,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.thurainx.libraryapp.data.vos.BookListVO
 import com.thurainx.libraryapp.data.vos.BookVO
+import com.thurainx.libraryapp.data.vos.GoogleBookVO
 import com.thurainx.libraryapp.data.vos.ShelfVO
 import com.thurainx.libraryapp.utils.DateUtils
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.lang.Exception
 
@@ -52,6 +54,13 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
                     it.localizedMessage?.let { it1 -> onFail(it1.toString()) }
                 }
             )
+    }
+
+    override fun searchBook(query: String): Observable<List<BookVO>> {
+        return mTheLibraryApi.searchBooks(query = query)
+            .map{ it.items?.map { googleBook -> googleBook.toBookVO() } ?: listOf() }
+            .onErrorResumeNext { Observable.just(listOf()) }
+            .subscribeOn(Schedulers.io())
     }
 
 
@@ -112,5 +121,25 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
         mLibraryDatabase?.shelfDao()?.deleteShelfById(id)
     }
 
+
+
+    fun GoogleBookVO.toBookVO() : BookVO{
+        return BookVO(
+            ageGroup = "",
+            author = this.volumeInfo?.authors?.joinToString(separator = ",").toString(),
+            bookImage = this.volumeInfo?.imageLinks?.thumbnail,
+            contributor = "",
+            createdDate = "",
+            description = this.volumeInfo?.description,
+            price = "",
+            publisher = "",
+            rank = 0,
+            rankLastWeek = 0,
+            title = this.volumeInfo?.title.toString(),
+            updatedDate = "",
+            bookListName = this.volumeInfo?.categories?.joinToString(separator = " ").toString(),
+            dateMillis = 0
+        )
+    }
 
 }

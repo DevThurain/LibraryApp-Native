@@ -20,6 +20,8 @@ interface LibraryModel {
         onFail: (String) -> Unit,
     )
 
+    fun searchBook(query: String) : Observable<List<BookVO>>
+
     // Recent Book List
     fun insertRecentBookToDatabase(bookVO: BookVO)
 

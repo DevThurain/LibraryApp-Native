@@ -8,6 +8,7 @@
     <application
         android:name=".TheLibraryApplication"
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LibraryApp"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.SearchBookActivity"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".activities.MoreBooksActivity"
             android:exported="false" />
@@ -34,11 +40,13 @@
         <activity
             android:name=".activities.BasedActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

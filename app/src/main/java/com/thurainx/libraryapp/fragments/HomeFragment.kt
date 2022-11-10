@@ -17,6 +17,7 @@ import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.activities.AddToShelfActivity
 import com.thurainx.libraryapp.activities.BookDetailActivity
 import com.thurainx.libraryapp.activities.MoreBooksActivity
+import com.thurainx.libraryapp.activities.SearchBookActivity
 import com.thurainx.libraryapp.adapters.BookListAdapter
 import com.thurainx.libraryapp.adapters.RecentBookAdapter
 import com.thurainx.libraryapp.data.models.LibraryModelImpl
@@ -65,6 +66,7 @@ class HomeFragment : Fragment(), HomeView {
         setupViewPods(view)
         setupBookListsRecyclerView()
         setupRecentBookRecyclerView()
+        setupListeners()
 
         mHomePresenter.onUiReady(this)
 
@@ -88,6 +90,12 @@ class HomeFragment : Fragment(), HomeView {
         recentBookCarousel.setOrientation(CarouselView.HORIZONTAL, false)
         recentBookCarousel.scaleView(true)
 
+    }
+
+    private fun setupListeners(){
+        vpHomeSearch.setOnClickListener {
+            mHomePresenter.onTapSearch()
+        }
     }
 
 
@@ -133,7 +141,8 @@ class HomeFragment : Fragment(), HomeView {
     }
 
     override fun navigateToSearch() {
-
+        val intent = SearchBookActivity.getIntent(requireActivity())
+        startActivity(intent)
 
     }
 
