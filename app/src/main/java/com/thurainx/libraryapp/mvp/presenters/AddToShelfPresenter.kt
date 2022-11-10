@@ -8,6 +8,6 @@ import com.thurainx.libraryapp.mvp.views.YourShelfView
 
 interface AddToShelfPresenter: BasedPresenter, AddToShelfDelegate{
     fun initView(view: AddToShelfView)
-    fun onTapSave(bookName: String)
+    fun onTapSave(bookVO: BookVO)
     fun onTapBack()
 }

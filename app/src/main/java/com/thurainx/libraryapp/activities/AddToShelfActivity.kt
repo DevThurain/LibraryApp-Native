@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.adapters.AddToShelfAdapter
+import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.data.vos.ShelfVO
 import com.thurainx.libraryapp.mvp.presenters.AddToShelfPresenter
 import com.thurainx.libraryapp.mvp.presenters.AddToShelfPresenterImpl
@@ -16,6 +18,7 @@ import com.thurainx.libraryapp.mvp.views.AddToShelfView
 import kotlinx.android.synthetic.main.activity_add_to_shelf.*
 
 
+const val EXTRA_BOOK_OBJECT = "EXTRA_BOOK_OBJECT"
 class AddToShelfActivity : AppCompatActivity(), AddToShelfView {
 
     lateinit var mAddToShelfAdapter: AddToShelfAdapter
@@ -23,9 +26,9 @@ class AddToShelfActivity : AppCompatActivity(), AddToShelfView {
     lateinit var mPresenter: AddToShelfPresenter
 
     companion object{
-        fun getIntent(context: Context,bookName: String) : Intent {
+        fun getIntent(context: Context,bookVO: BookVO) : Intent {
             val intent = Intent(context, AddToShelfActivity::class.java)
-            intent.putExtra(EXTRA_BOOK_NAME, bookName)
+            intent.putExtra(EXTRA_BOOK_OBJECT, Gson().toJson(bookVO))
             return intent
         }
     }
@@ -55,8 +58,9 @@ class AddToShelfActivity : AppCompatActivity(), AddToShelfView {
         }
 
         ivAddToShelSave.setOnClickListener {
-            intent.getStringExtra(EXTRA_BOOK_NAME)?.let { bookName ->
-                mPresenter.onTapSave(bookName)
+            intent.getStringExtra(EXTRA_BOOK_OBJECT)?.let { bookString ->
+                val book = Gson().fromJson(bookString,BookVO::class.java)
+                mPresenter.onTapSave(book)
             }
         }
     }

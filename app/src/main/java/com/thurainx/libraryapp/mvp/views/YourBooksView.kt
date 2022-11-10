@@ -12,7 +12,7 @@ interface YourBooksView : BasedView {
     fun showBookList(bookList: List<BookVO>)
 
     fun showBookInfoDialog(bookVO: BookVO)
-    fun navigateToAddToShelf(bookName: String)
+    fun navigateToAddToShelf(bookVO: BookVO)
 
 
 

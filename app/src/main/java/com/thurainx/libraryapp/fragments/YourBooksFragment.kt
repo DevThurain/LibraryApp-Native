@@ -93,8 +93,8 @@ class YourBooksFragment : Fragment(), YourBooksView {
         }
     }
 
-    override fun navigateToAddToShelf(bookName: String) {
-        val intent = AddToShelfActivity.getIntent(requireActivity(),bookName)
+    override fun navigateToAddToShelf(bookVO: BookVO) {
+        val intent = AddToShelfActivity.getIntent(requireActivity(), bookVO)
         startActivity(intent)
     }
 
