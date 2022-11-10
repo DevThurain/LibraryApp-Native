@@ -31,7 +31,7 @@ class YourShelfPresenterImpl : ViewModel(), YourShelfPresenter {
     }
 
     override fun onTapShelf(shelfVO: ShelfVO) {
-        mShelfView?.navigateToShelfDetail(shelfVO.name)
+        mShelfView?.navigateToShelfDetail(shelfVO.uniqueId)
     }
 
     override fun onTapCreateShelf() {

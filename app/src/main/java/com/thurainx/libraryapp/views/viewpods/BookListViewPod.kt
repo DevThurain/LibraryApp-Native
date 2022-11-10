@@ -243,7 +243,7 @@ class BookListViewPod @JvmOverloads constructor(
         when(selectedSortType){
             SortType.BOOK_TITLE -> selectedBookList.sortBy { it.title.lowercase() }
             SortType.AUTHOR -> selectedBookList.sortBy { it.author?.lowercase() }
-            SortType.DATE -> selectedBookList.sortBy { it.dateMillis }
+            SortType.DATE -> selectedBookList.sortByDescending { it.dateMillis }
         }
     }
 

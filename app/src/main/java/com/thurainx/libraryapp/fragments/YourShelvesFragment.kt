@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.activities.CreateShelfActivity
+import com.thurainx.libraryapp.activities.ShelfDetailActivity
 import com.thurainx.libraryapp.adapters.ShelfAdapter
 import com.thurainx.libraryapp.data.vos.ShelfVO
 import com.thurainx.libraryapp.mvp.presenters.YourShelfPresenter
@@ -63,8 +64,9 @@ class YourShelvesFragment : Fragment(), YourShelfView {
         startActivity(intent)
     }
 
-    override fun navigateToShelfDetail(shelfName: String) {
-
+    override fun navigateToShelfDetail(id: Long) {
+        val intent = ShelfDetailActivity.getIntent(requireActivity(),id)
+        startActivity(intent)
 
     }
 

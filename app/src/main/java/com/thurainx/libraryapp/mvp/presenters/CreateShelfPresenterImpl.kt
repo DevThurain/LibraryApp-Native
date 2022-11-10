@@ -26,6 +26,7 @@ class CreateShelfPresenterImpl : ViewModel(), CreateShelfPresenter {
     override fun onTapComplete(shelfName: String) {
         if(shelfName.isNotEmpty()){
             val shelfVO = ShelfVO(
+                uniqueId = System.currentTimeMillis(),
                 name = shelfName
             )
             mLibraryModel.insertShelfToDatabase(shelfVO)

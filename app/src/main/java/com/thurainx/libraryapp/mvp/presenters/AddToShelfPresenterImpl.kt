@@ -58,12 +58,12 @@ class AddToShelfPresenterImpl : ViewModel(), AddToShelfPresenter {
     override fun onTapSave(bookName: String) {
         val bookVO = mLibraryModel.getRecentBookByNameFromDatabaseOneTime(bookName)
 
-        bookVO?.let {
+        bookVO?.let { book ->
             allShelf.forEach { shelf ->
                 if(selectedShelf.contains(shelf.name)){
                     val bookList = shelf.books.toMutableList()
-                    if(!bookList.contains(bookVO)){
-                        bookList.add(it)
+                    if(bookList.firstOrNull { it.title == bookName } == null) {
+                        bookList.add(book)
                         shelf.books = bookList
                     }
                 }

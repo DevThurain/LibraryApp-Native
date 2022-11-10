@@ -4,55 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".activities.CreateShelfActivity">
+    tools:context=".activities.ShelfDetailActivity">
 
     <ImageView
-        android:id="@+id/ivCreateShelfClose"
+        android:id="@+id/ivShelfDetailBack"
         android:layout_width="@dimen/margin_xlarge"
         android:layout_height="@dimen/margin_xlarge"
         android:layout_marginHorizontal="@dimen/margin_medium_2"
         android:layout_marginTop="@dimen/margin_medium_2"
         android:src="@drawable/ic_chevron_left" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvBookListTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/ivCreateShelfClose"
-        android:layout_alignBottom="@id/ivCreateShelfClose"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:text="Create Shelf"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_regular_2x_medium" />
 
     <ImageView
-        android:id="@+id/ivCreateShelfDone"
+        android:id="@+id/ivShelfDetailMore"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentEnd="true"
         android:layout_marginHorizontal="@dimen/margin_medium_2"
         android:layout_marginTop="@dimen/margin_medium_2"
-        android:src="@drawable/ic_done" />
+        android:src="@drawable/ic_more_horizotal" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutShelfName"
+        android:id="@+id/textInputLayoutShelfDetailShelfName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ivCreateShelfClose"
+        android:layout_below="@id/ivShelfDetailBack"
         android:layout_marginHorizontal="@dimen/text_regular_2x"
-        android:layout_marginVertical="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
         app:hintAnimationEnabled="false"
         app:hintEnabled="false"
         app:boxStrokeColor="@color/search_box_stroke_color"
         app:counterEnabled="true"
-        app:counterMaxLength="20"
-        >
+        android:visibility="invisible"
+        app:counterMaxLength="20">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtShelfName"
+            android:id="@+id/edtShelfDetailShelfName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -68,12 +55,44 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvShelfDetailName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/text_regular_2x"
+        android:textSize="@dimen/text_heading_1x"
+        android:text="Fun Books"
+        android:textColor="@color/black"
+        android:layout_marginVertical="@dimen/margin_large"
+        android:layout_alignBottom="@id/textInputLayoutShelfDetailShelfName"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvShelfDetailBookCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutShelfDetailShelfName"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="10 books"
+        android:textColor="@color/light_grey"
+        android:textSize="@dimen/text_regular" />
+
     <View
+        android:id="@+id/dividerBookShelfDetail"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/textInputLayoutShelfName"
-        android:layout_marginVertical="@dimen/margin_medium"
+        android:layout_below="@id/tvShelfDetailBookCount"
+        android:layout_marginVertical="@dimen/margin_medium_3"
         android:background="@color/light_grey_30percent" />
+
+    <include
+        android:id="@+id/vpShelfDetailBookList"
+        layout="@layout/view_pod_book_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/dividerBookShelfDetail" />
+
 
 
 </RelativeLayout>

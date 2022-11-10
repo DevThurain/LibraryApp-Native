@@ -36,7 +36,8 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
 
     // recent book
     override fun insertRecentBookToDatabase(bookVO: BookVO) {
-        bookVO.dateMillis = DateUtils.convertDateStringToMilli(bookVO.createdDate.toString())
+//        bookVO.dateMillis = DateUtils.convertDateStringToMilli(bookVO.createdDate.toString())
+        bookVO.dateMillis = System.currentTimeMillis()
         mLibraryDatabase?.recentBookDao()?.insertSingleBook(bookVO)
     }
 
@@ -80,5 +81,11 @@ object LibraryModelImpl : BasedModel(), LibraryModel {
     override fun insertShelfListToDatabase(shelfList: List<ShelfVO>) {
         mLibraryDatabase?.shelfDao()?.insertShelfList(shelfList)
     }
+
+    override fun getShelfById(id: Long): LiveData<ShelfVO>? {
+       return mLibraryDatabase?.shelfDao()?.getShelfById(id)
+
+    }
+
 
 }

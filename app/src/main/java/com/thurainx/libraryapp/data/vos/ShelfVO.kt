@@ -13,6 +13,10 @@ import com.thurainx.libraryapp.persistence.typeconverters.BookTypeConverter
 )
 data class ShelfVO(
     @PrimaryKey
+    @ColumnInfo(name = "unique_id")
+    @SerializedName("unique_id")
+    val uniqueId: Long,
+
     @ColumnInfo(name = "name")
     @SerializedName("name")
     val name: String,
