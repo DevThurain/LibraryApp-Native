@@ -4,4 +4,5 @@ import com.thurainx.libraryapp.data.vos.BookVO
 
 interface BookDelegate {
     fun onTapBook(bookVO: BookVO)
+    fun onTapMore(bookVO: BookVO)
 }

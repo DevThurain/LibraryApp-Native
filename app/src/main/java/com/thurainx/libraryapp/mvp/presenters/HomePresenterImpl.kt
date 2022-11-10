@@ -20,6 +20,8 @@ class HomePresenterImpl : ViewModel(), HomePresenter {
         mHomeView = view
     }
 
+
+
     override fun onUiReady(owner: LifecycleOwner) {
         mLibraryModel.getBookListsFromDatabase {
             mHomeView?.showErrorMessage(it)
@@ -34,8 +36,22 @@ class HomePresenterImpl : ViewModel(), HomePresenter {
     }
 
     override fun onTapBook(bookVO: BookVO) {
-        mLibraryModel.insertRecentBookToDatabase(bookVO)
         mHomeView?.navigateToBookDetail(bookVO)
+    }
+    override fun onTapAddToShelf(bookVO: BookVO) {
+        mHomeView?.navigateToAddToShelf(bookVO)
+    }
+
+    override fun onTapAddToLibrary(bookVO: BookVO) {
+        mLibraryModel.insertRecentBookToDatabase(bookVO)
+    }
+
+    override fun onTapBookInfo(bookVO: BookVO) {
+        mHomeView?.navigateToBookDetail(bookVO)
+    }
+
+    override fun onTapMore(bookVO: BookVO) {
+        mHomeView?.showBookDetailDialog(bookVO)
     }
 
     override fun onTapMoreBooks(bookList: BookListVO) {

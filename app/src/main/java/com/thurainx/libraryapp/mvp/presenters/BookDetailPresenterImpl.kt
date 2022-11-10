@@ -21,10 +21,11 @@ class BookDetailPresenterImpl : ViewModel(), BookDetailPresenter{
         mBookDetailView = view
     }
 
-    override fun onUiReadyBookDetail(owner: LifecycleOwner, bookName: String) {
-       mLibraryModel.getRecentBookByNameFromDatabase(bookName)?.observe(owner) { book ->
-           mBookDetailView?.bindBookData(book)
-       }
+    override fun onUiReadyBookDetail(owner: LifecycleOwner, bookVO: BookVO) {
+       mBookDetailView?.bindBookData(bookVO)
+
+        mLibraryModel.insertRecentBookToDatabase(bookVO)
+
     }
 
     override fun onTapBack() {

@@ -10,8 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.thurainx.libraryapp.R
+import com.thurainx.libraryapp.activities.AddToShelfActivity
 import com.thurainx.libraryapp.activities.BookDetailActivity
 import com.thurainx.libraryapp.adapters.BookListAdapter
 import com.thurainx.libraryapp.adapters.RecentBookAdapter
@@ -22,8 +25,12 @@ import com.thurainx.libraryapp.mvp.presenters.HomePresenter
 import com.thurainx.libraryapp.mvp.presenters.HomePresenterImpl
 import com.thurainx.libraryapp.mvp.views.HomeView
 import com.thurainx.libraryapp.views.viewpods.BookTypeViewPod
+import kotlinx.android.synthetic.main.activity_shelf_detail.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.sheet_dialog_book_download.*
+import kotlinx.android.synthetic.main.sheet_dialog_book_info.*
+import kotlinx.android.synthetic.main.sheet_shelf_update.*
 
 
 class HomeFragment : Fragment(), HomeView {
@@ -94,13 +101,47 @@ class HomeFragment : Fragment(), HomeView {
         mBookListAdapter.setNewData(bookLists)
     }
 
+    override fun showBookDetailDialog(book: BookVO) {
+        val dialog = BottomSheetDialog(requireContext())
+        dialog.setContentView(R.layout.sheet_dialog_book_download)
+        dialog.show()
+
+        dialog.show()
+
+        Glide.with(this)
+            .load(book.bookImage)
+            .into(dialog.ivBookDownloadCover)
+
+        dialog.tvBookDownloadName.text = book.title
+
+        dialog.layoutBookDownloadAddToLibrary.setOnClickListener {
+            mHomePresenter.onTapAddToLibrary(book)
+            dialog.dismiss()
+        }
+
+        dialog.layoutBookDownloadAddToShelf.setOnClickListener {
+            mHomePresenter.onTapAddToShelf(book)
+            dialog.dismiss()
+        }
+
+        dialog.layoutBookDownloadAboutThisBook.setOnClickListener {
+            mHomePresenter.onTapBookInfo(book)
+            dialog.dismiss()
+        }
+    }
+
     override fun navigateToSearch() {
 
 
     }
 
     override fun navigateToBookDetail(book : BookVO) {
-        val intent = BookDetailActivity.getIntent(requireActivity(),book.title)
+        val intent = BookDetailActivity.getIntent(requireActivity(),book)
+        startActivity(intent)
+    }
+
+    override fun navigateToAddToShelf(book: BookVO) {
+        val intent = AddToShelfActivity.getIntent(requireActivity(),book)
         startActivity(intent)
     }
 

@@ -16,6 +16,12 @@ class BookViewHolder(itemView: View,delegate: BookDelegate) : RecyclerView.ViewH
                 delegate.onTapBook(it)
             }
         }
+
+        itemView.ivBookViewMore?.setOnClickListener {
+            mBookVO?.let {
+                delegate.onTapMore(it)
+            }
+        }
     }
 
     fun bind(bookVO: BookVO){

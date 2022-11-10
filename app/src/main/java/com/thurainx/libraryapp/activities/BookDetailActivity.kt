@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.mvp.presenters.BookDetailPresenter
@@ -15,16 +16,15 @@ import com.thurainx.libraryapp.mvp.views.BookDetailView
 import kotlinx.android.synthetic.main.activity_book_detail.*
 import kotlinx.android.synthetic.main.view_holder_book.view.*
 
-const val EXTRA_BOOK_NAME = "EXTRA_BOOK_NAME"
 
 class BookDetailActivity : AppCompatActivity(), BookDetailView {
 
     lateinit var mPresenter: BookDetailPresenter
 
     companion object{
-        fun getIntent(context: Context,bookName: String) : Intent{
+        fun getIntent(context: Context,bookVO: BookVO) : Intent{
             val intent = Intent(context, BookDetailActivity::class.java)
-            intent.putExtra(EXTRA_BOOK_NAME, bookName)
+            intent.putExtra(EXTRA_BOOK_OBJECT, Gson().toJson(bookVO))
             return intent
         }
     }
@@ -34,8 +34,9 @@ class BookDetailActivity : AppCompatActivity(), BookDetailView {
 
         setupPresenter()
         setupListeners()
-        intent.getStringExtra(EXTRA_BOOK_NAME)?.let {
-            mPresenter.onUiReadyBookDetail(owner = this, bookName =  it)
+        intent.getStringExtra(EXTRA_BOOK_OBJECT)?.let {
+            val book = Gson().fromJson(it,BookVO::class.java)
+            mPresenter.onUiReadyBookDetail(owner = this, bookVO = book)
         }
     }
 
