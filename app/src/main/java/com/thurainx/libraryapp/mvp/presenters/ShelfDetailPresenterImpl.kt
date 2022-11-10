@@ -58,6 +58,10 @@ class ShelfDetailPresenterImpl : ViewModel(), ShelfDetailPresenter {
         }
     }
 
+    override fun onTapBack() {
+        mShelfDetailView?.navigateBack()
+    }
+
     override fun onTapShelfMore() {
         selectedShelf?.let {
             mShelfDetailView?.showShelfUpdateDialog(it)
@@ -116,18 +120,5 @@ class ShelfDetailPresenterImpl : ViewModel(), ShelfDetailPresenter {
 //        mShelfDetailView?.showBookInfoDialogForShelfBooks(bookVO)
     }
 
-    override fun onAddToShelf(bookVO: BookVO) {
-//        mYourBooksView?.navigateToAddToShelf(bookVO.title)
-    }
-
-    override fun onRemoveFromLibrary(bookVO: BookVO) {
-//        if(selectedCategory.isNotEmpty()){
-//            if(mLibraryModel.getAllRecentBookByCategoryOneTime(selectedCategory)?.size == 1){
-//                onTapClearCategory()
-//            }
-//        }
-//        mLibraryModel.deleteRecentBookByName(bookName = bookVO.title)
-
-    }
 
 }

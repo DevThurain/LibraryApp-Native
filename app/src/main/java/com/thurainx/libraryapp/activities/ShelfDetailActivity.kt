@@ -17,7 +17,9 @@ import com.thurainx.libraryapp.data.vos.ShelfVO
 import com.thurainx.libraryapp.mvp.presenters.ShelfDetailPresenter
 import com.thurainx.libraryapp.mvp.presenters.ShelfDetailPresenterImpl
 import com.thurainx.libraryapp.mvp.views.ShelfDetailView
-import com.thurainx.libraryapp.views.viewpods.BookListViewPod
+import com.thurainx.libraryapp.utils.KeyboardUtils
+import com.thurainx.libraryapp.utils.KeyboardUtils.hideKeyboard
+ import com.thurainx.libraryapp.views.viewpods.BookListViewPod
 import kotlinx.android.synthetic.main.activity_create_shelf.*
 import kotlinx.android.synthetic.main.activity_shelf_detail.*
 import kotlinx.android.synthetic.main.fragment_your_books.view.*
@@ -57,6 +59,9 @@ class ShelfDetailActivity : AppCompatActivity(), ShelfDetailView {
 
     private fun setupListeners(){
 
+        ivShelfDetailBack.setOnClickListener {
+            mPresenter.onTapBack()
+        }
         ivShelfDetailMore.setOnClickListener {
             mPresenter.onTapShelfMore()
         }
@@ -67,6 +72,7 @@ class ShelfDetailActivity : AppCompatActivity(), ShelfDetailView {
                     mPresenter.onRenameShelf(textView.text.toString())
                     tvShelfDetailName.visibility = View.VISIBLE
                     textInputLayoutShelfDetailShelfName.visibility = View.INVISIBLE
+                    KeyboardUtils.hideKeyboard(textView,this)
                     true
                 }
                 else -> false

@@ -217,27 +217,7 @@ class BookListViewPod @JvmOverloads constructor(
         dialog.show()
     }
 
-    fun showBookInfoDialog(bookVO: BookVO){
-        val dialog = BottomSheetDialog(context)
-        dialog.setContentView(R.layout.sheet_dialog_book_info)
-        dialog.show()
 
-        Glide.with(context)
-            .load(bookVO.bookImage)
-            .into(dialog.ivBookInfoCover)
-
-        dialog.tvBookInfoName.text = bookVO.title
-
-        dialog.layoutAddToShelf.setOnClickListener {
-            smartBookDelegate?.onAddToShelf(bookVO)
-            dialog.dismiss()
-        }
-
-        dialog.layoutRemoveFromLibrary.setOnClickListener {
-            smartBookDelegate?.onRemoveFromLibrary(bookVO)
-            dialog.dismiss()
-        }
-    }
 
     private fun doSorting(){
         when(selectedSortType){

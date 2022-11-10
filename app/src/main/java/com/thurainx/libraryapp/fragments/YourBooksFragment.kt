@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.activities.AddToShelfActivity
@@ -17,6 +19,7 @@ import com.thurainx.libraryapp.mvp.presenters.YourBooksPresenterImpl
 import com.thurainx.libraryapp.mvp.views.YourBooksView
 import com.thurainx.libraryapp.views.viewpods.BookListViewPod
 import kotlinx.android.synthetic.main.fragment_your_books.view.*
+import kotlinx.android.synthetic.main.sheet_dialog_book_info.*
 
 class YourBooksFragment : Fragment(), YourBooksView {
 
@@ -69,7 +72,25 @@ class YourBooksFragment : Fragment(), YourBooksView {
     }
 
     override fun showBookInfoDialog(bookVO: BookVO) {
-        vpYourBooks.showBookInfoDialog(bookVO)
+        val dialog = BottomSheetDialog(requireContext())
+        dialog.setContentView(R.layout.sheet_dialog_book_info)
+        dialog.show()
+
+        Glide.with(this)
+            .load(bookVO.bookImage)
+            .into(dialog.ivBookInfoCover)
+
+        dialog.tvBookInfoName.text = bookVO.title
+
+        dialog.layoutAddToShelf.setOnClickListener {
+            mPresenter.onAddToShelf(bookVO)
+            dialog.dismiss()
+        }
+
+        dialog.layoutRemoveFromLibrary.setOnClickListener {
+            mPresenter.onRemoveFromLibrary(bookVO)
+            dialog.dismiss()
+        }
     }
 
     override fun navigateToAddToShelf(bookName: String) {
