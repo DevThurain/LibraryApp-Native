@@ -65,7 +65,7 @@ class SearchBookActivity : AppCompatActivity(), SearchBookView{
 
     private fun setupEditText(){
         edtBookSearch.textChanges()
-            .debounce(500L, TimeUnit.MILLISECONDS)
+            .debounce(1000L, TimeUnit.MILLISECONDS)
             .flatMap { mLibraryModel.searchBook(it.toString())}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

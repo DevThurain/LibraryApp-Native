@@ -2,17 +2,11 @@ package com.thurainx.libraryapp.views.viewpods
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
-import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.RelativeLayout
-import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.adapters.*
@@ -20,13 +14,10 @@ import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.data.vos.CategoryVO
 import com.thurainx.libraryapp.delegate.CategoryDelegate
 import com.thurainx.libraryapp.delegate.SmartBookDelegate
-import com.thurainx.libraryapp.delegate.SortingDelegate
 import com.thurainx.libraryapp.utils.ListType
 import com.thurainx.libraryapp.utils.SortType
 import com.thurainx.libraryapp.views.components.GridSpacingItemDecoration
-import kotlinx.android.synthetic.main.sheet_dialog_book_info.*
 import kotlinx.android.synthetic.main.sheet_dialog_grid.*
-import kotlinx.android.synthetic.main.sheet_dialog_grid.view.*
 import kotlinx.android.synthetic.main.sheet_dialog_sort.*
 import kotlinx.android.synthetic.main.view_pod_book_list.view.*
 
@@ -51,6 +42,15 @@ class BookListViewPod @JvmOverloads constructor(
     }
 
     fun setupCategoryList(categoryList: List<CategoryVO>) {
+        if(categoryList.isEmpty()){
+            rvCategory.visibility = View.INVISIBLE
+            layoutFilters.visibility = View.INVISIBLE
+            layoutEmptyCategoryList.visibility = View.VISIBLE
+        }else{
+            rvCategory.visibility = View.VISIBLE
+            layoutFilters.visibility = View.VISIBLE
+            layoutEmptyCategoryList.visibility = View.GONE
+        }
         mCategoryAdapter = CategoryAdapter(categoryDelegate!!)
         rvCategory.adapter = mCategoryAdapter
 

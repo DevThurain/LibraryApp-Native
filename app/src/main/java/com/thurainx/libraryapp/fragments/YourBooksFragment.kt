@@ -11,6 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.activities.AddToShelfActivity
+import com.thurainx.libraryapp.activities.BookDetailActivity
 import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.data.vos.CategoryVO
 import com.thurainx.libraryapp.delegate.CategoryDelegate
@@ -95,6 +96,11 @@ class YourBooksFragment : Fragment(), YourBooksView {
 
     override fun navigateToAddToShelf(bookVO: BookVO) {
         val intent = AddToShelfActivity.getIntent(requireActivity(), bookVO)
+        startActivity(intent)
+    }
+
+    override fun navigateToBookDetail(bookVO: BookVO) {
+        val intent = BookDetailActivity.getIntent(requireActivity(), bookVO)
         startActivity(intent)
     }
 

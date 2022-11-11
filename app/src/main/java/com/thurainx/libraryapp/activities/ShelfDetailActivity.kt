@@ -148,6 +148,11 @@ class ShelfDetailActivity : AppCompatActivity(), ShelfDetailView {
         }
     }
 
+    override fun navigateToBookDetail(bookVO: BookVO) {
+        val intent = BookDetailActivity.getIntent(this,bookVO)
+        startActivity(intent)
+    }
+
     override fun navigateBack() {
         super.onBackPressed()
     }

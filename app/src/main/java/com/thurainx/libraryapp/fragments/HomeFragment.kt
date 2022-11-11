@@ -104,6 +104,11 @@ class HomeFragment : Fragment(), HomeView {
     }
 
     override fun showRecentBookList(bookList: List<BookVO>) {
+        if(bookList.isEmpty()){
+            layoutEmptyRecentList.visibility = View.VISIBLE
+        }else{
+            layoutEmptyRecentList.visibility = View.GONE
+        }
         mRecentBookAdapter.setNewData(bookList)
     }
 

@@ -11,4 +11,7 @@
     <string name="lbl_create_new">Create new</string>
     <string name="lbl_shelf_name">Shelf name</string>
     <string name="lbl_add_to_shelves">Add to shelves</string>
+    <string name="lbl_let_s_find_your_next_read">Let\'s find your next read</string>
+    <string name="lbl_shop_for_books">Shop for books</string>
+    <string name="lbl_empty_detail">From romance to superheroes to Thai cusine, we have tons of books for all your interests</string>
 </resources>

@@ -133,7 +133,7 @@ class ShelfDetailPresenterImpl : ViewModel(), ShelfDetailPresenter {
     }
 
     override fun onTapBook(bookVO: BookVO) {
-
+        mShelfDetailView?.navigateToBookDetail(bookVO)
     }
 
     override fun onTapMore(bookVO: BookVO) {

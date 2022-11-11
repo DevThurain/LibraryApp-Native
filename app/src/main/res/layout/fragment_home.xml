@@ -28,9 +28,18 @@
                 app:reverseLayout="true"
                 android:layout_width="match_parent"
                 android:layout_marginVertical="@dimen/margin_large"
-                android:layout_height="wrap_content"
+                android:layout_height="260dp"
                 android:layout_below="@id/vpHomeSearch"
                 />
+
+            <include
+                android:id="@+id/layoutEmptyRecentList"
+                layout="@layout/view_empty_recent_list"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:visibility="gone"
+                android:layout_alignTop="@id/rvRecentBooks"
+                android:layout_alignBottom="@id/rvRecentBooks"/>
 
             <include
                 android:id="@+id/vpBookTypeHome"

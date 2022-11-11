@@ -89,7 +89,7 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
     }
 
     override fun onTapBook(bookVO: BookVO) {
-
+        mYourBooksView?.navigateToBookDetail(bookVO)
     }
 
     override fun onTapMore(bookVO: BookVO) {

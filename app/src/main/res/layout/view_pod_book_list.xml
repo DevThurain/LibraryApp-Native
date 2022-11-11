@@ -70,6 +70,16 @@
             tools:listitem="@layout/layout_book_listview" />
 
 
+        <include
+            android:id="@+id/layoutEmptyCategoryList"
+            layout="@layout/view_empty_recent_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_alignTop="@id/rvCategory"
+            android:layout_alignBottom="@id/rvSmartBookList"/>
+
+
     </RelativeLayout>
 
 
