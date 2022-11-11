@@ -53,8 +53,11 @@ class CategoryAdapter(val delegate: CategoryDelegate) : RecyclerView.Adapter<Cat
 
     fun updateItem(categoryVO: CategoryVO){
         val position = mCategoryList.indexOf(categoryVO)
-        mCategoryList.removeAt(position)
-        notifyItemRemoved(position)
+        if(mCategoryList.size > position){
+            mCategoryList.removeAt(position)
+            notifyItemRemoved(position)
+        }
+
 
         mCategoryList.forEach {
             it.isSelected = false
