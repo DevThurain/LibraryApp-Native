@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ReviewDetailActivity">
+
+    <ImageView
+        android:id="@+id/ivReviewDetailBack"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:src="@drawable/ic_chevron_left" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvReviewDetailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ivReviewDetailBack"
+        android:layout_alignBottom="@id/ivReviewDetailBack"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="@string/lbl_ratings_and_reviews"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_regular_2x_medium" />
+
+    <LinearLayout
+        android:id="@+id/layoutBookDetailReviews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_below="@id/ivReviewDetailBack">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookDetailRatingLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="4.9"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_big_2x" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:max="5"
+                android:numStars="5"
+                android:progress="4"
+                android:progressTint="@color/primary_blue" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookDetailReviewCountLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="104 reviews"
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/text_regular" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBookDetailRating5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:textColor="@color/light_grey"
+                    android:textSize="@dimen/text_regular" />
+
+                <com.thurainx.libraryapp.views.components.LineProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/margin_medium_2"
+                    app:maxLineValue="100"
+                    app:minLineValue="0"
+                    app:lineProgressBarThickness="@dimen/margin_card_medium_2"
+                    app:lineProgressValue="70"
+                    app:lineProgressBarColor="@color/primary_blue" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBookDetailRating4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:textColor="@color/light_grey"
+                    android:textSize="@dimen/text_regular" />
+
+                <com.thurainx.libraryapp.views.components.LineProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/margin_medium_2"
+                    app:maxLineValue="100"
+                    app:minLineValue="0"
+                    app:lineProgressBarThickness="@dimen/margin_card_medium_2"
+                    app:lineProgressValue="40"
+                    app:lineProgressBarColor="@color/primary_blue" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBookDetailRating3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:textColor="@color/light_grey"
+                    android:textSize="@dimen/text_regular" />
+
+                <com.thurainx.libraryapp.views.components.LineProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/margin_medium_2"
+                    app:maxLineValue="100"
+                    app:minLineValue="0"
+                    app:lineProgressBarThickness="@dimen/margin_card_medium_2"
+                    app:lineProgressValue="20"
+                    app:lineProgressBarColor="@color/primary_blue" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBookDetailRating2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:textColor="@color/light_grey"
+                    android:textSize="@dimen/text_regular" />
+
+                <com.thurainx.libraryapp.views.components.LineProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/margin_medium_2"
+                    app:maxLineValue="100"
+                    app:minLineValue="0"
+                    app:lineProgressBarThickness="@dimen/margin_card_medium_2"
+                    app:lineProgressValue="5"
+                    app:lineProgressBarColor="@color/primary_blue" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBookDetailRating1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="@color/light_grey"
+                    android:textSize="@dimen/text_regular" />
+
+                <com.thurainx.libraryapp.views.components.LineProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/margin_medium_2"
+                    app:maxLineValue="100"
+                    app:minLineValue="0"
+                    app:lineProgressBarThickness="@dimen/margin_card_medium_2"
+                    app:lineProgressValue="5"
+                    app:lineProgressBarColor="@color/primary_blue" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutBookDetailReviews"
+        android:layout_marginTop="@dimen/margin_medium_3"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/margin_medium_2"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="5"
+        tools:listitem="@layout/view_holder_rating" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvComments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rvRating"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium_2"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="15"
+        tools:listitem="@layout/view_holder_comment" />
+
+
+</RelativeLayout>

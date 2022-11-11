@@ -6,5 +6,6 @@ import com.thurainx.libraryapp.data.vos.BookVO
 interface BookDetailView : BasedView {
     fun bindBookData(bookVO: BookVO)
     fun navigateBack()
+    fun navigateToRatingDetail()
 
 }

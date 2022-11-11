@@ -49,6 +49,9 @@ class BookDetailActivity : AppCompatActivity(), BookDetailView {
         btnMovieDetailBack.setOnClickListener {
             mPresenter.onTapBack()
         }
+        layoutBookDetailRating.setOnClickListener {
+            mPresenter.onTapMoreRatings()
+        }
     }
 
 
@@ -64,6 +67,11 @@ class BookDetailActivity : AppCompatActivity(), BookDetailView {
 
     override fun navigateBack() {
         super.onBackPressed()
+    }
+
+    override fun navigateToRatingDetail() {
+        val intent = ReviewDetailActivity.getIntent(this)
+        startActivity(intent)
     }
 
     override fun showErrorMessage(message: String) {

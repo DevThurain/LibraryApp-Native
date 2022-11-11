@@ -7,6 +7,7 @@ import com.thurainx.libraryapp.mvp.views.BookDetailView
 interface BookDetailPresenter: BasedPresenter{
     fun initView(view: BookDetailView)
     fun onUiReadyBookDetail(owner: LifecycleOwner, bookVO: BookVO)
+    fun onTapMoreRatings()
     fun onTapBack()
 
 }

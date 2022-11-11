@@ -28,6 +28,10 @@ class BookDetailPresenterImpl : ViewModel(), BookDetailPresenter{
 
     }
 
+    override fun onTapMoreRatings() {
+        mBookDetailView?.navigateToRatingDetail()
+    }
+
     override fun onTapBack() {
         mBookDetailView?.navigateBack()
     }
