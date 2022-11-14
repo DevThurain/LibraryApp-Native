@@ -217,31 +217,42 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRating"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/layoutBookDetailReviews"
-        android:layout_marginTop="@dimen/margin_medium_3"
-        android:orientation="horizontal"
-        android:paddingEnd="@dimen/margin_medium_2"
-        android:clipToPadding="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="5"
-        tools:listitem="@layout/view_holder_rating" />
+        android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvComments"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rvRating"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:paddingBottom="@dimen/margin_medium_2"
-        android:clipToPadding="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="15"
-        tools:listitem="@layout/view_holder_comment" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutBookDetailReviews"
+            android:layout_marginTop="@dimen/margin_medium_3"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/margin_medium_2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"
+            tools:listitem="@layout/view_holder_rating" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rvRating"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/margin_medium_2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="15"
+            tools:listitem="@layout/view_holder_comment" />
+
+
+    </LinearLayout>
+
+
 
 
 </RelativeLayout>

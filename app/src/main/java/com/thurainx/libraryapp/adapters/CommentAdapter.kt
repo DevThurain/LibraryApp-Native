@@ -23,7 +23,7 @@ class CommentAdapter() : RecyclerView.Adapter<RatingViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 15
+        return 3
     }
 
 

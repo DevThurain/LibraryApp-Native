@@ -1,19 +1,23 @@
 package com.thurainx.libraryapp.uitests.utils
 
+import android.content.Context
+import android.graphics.PorterDuff
 import android.view.View
 import android.widget.HorizontalScrollView
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.ScrollView
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.toColor
 import androidx.core.widget.NestedScrollView
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ScrollToAction
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.actionWithAssertions
 import androidx.test.espresso.matcher.ViewMatchers
-import org.hamcrest.BaseMatcher
-import org.hamcrest.Description
-import org.hamcrest.Matcher
-import org.hamcrest.Matchers
+import org.hamcrest.*
 
 
 fun <T> first(matcher: Matcher<T>): Matcher<T> {
@@ -45,5 +49,18 @@ class NestedScrollViewExtension(scrolltoAction: ViewAction = ViewActions.scrollT
                 ViewMatchers.isAssignableFrom(ScrollView::class.java),
                 ViewMatchers.isAssignableFrom(HorizontalScrollView::class.java),
                 ViewMatchers.isAssignableFrom(ListView::class.java))))
+    }
+}
+
+fun withDrawable(@DrawableRes id: Int) = object : TypeSafeMatcher<View>() {
+    override fun describeTo(description: Description) {
+        description.appendText("ImageView with drawable same as drawable with id $id")
+    }
+
+    override fun matchesSafely(view: View): Boolean {
+        val context = view.context
+        val expectedBitmap = context.getDrawable(id)?.toBitmap()
+
+        return view is ImageView && view.drawable.toBitmap().sameAs(expectedBitmap)
     }
 }

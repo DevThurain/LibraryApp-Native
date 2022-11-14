@@ -9,17 +9,19 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.thurainx.libraryapp.R
+import com.thurainx.libraryapp.adapters.CommentAdapter
+import com.thurainx.libraryapp.adapters.RatingAdapter
 import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.mvp.presenters.BookDetailPresenter
 import com.thurainx.libraryapp.mvp.presenters.BookDetailPresenterImpl
 import com.thurainx.libraryapp.mvp.views.BookDetailView
 import kotlinx.android.synthetic.main.activity_book_detail.*
-import kotlinx.android.synthetic.main.view_holder_book.view.*
 
 
 class BookDetailActivity : AppCompatActivity(), BookDetailView {
 
     lateinit var mPresenter: BookDetailPresenter
+    lateinit var commentAdapter: CommentAdapter
 
     companion object{
         fun getIntent(context: Context,bookVO: BookVO) : Intent{
@@ -33,6 +35,7 @@ class BookDetailActivity : AppCompatActivity(), BookDetailView {
         setContentView(R.layout.activity_book_detail)
 
         setupPresenter()
+        setupCommentRecyclerView()
         setupListeners()
         intent.getStringExtra(EXTRA_BOOK_OBJECT)?.let {
             val book = Gson().fromJson(it,BookVO::class.java)
@@ -44,6 +47,12 @@ class BookDetailActivity : AppCompatActivity(), BookDetailView {
         mPresenter = ViewModelProvider(this)[BookDetailPresenterImpl::class.java]
         mPresenter.initView(this)
     }
+
+    private fun setupCommentRecyclerView() {
+        commentAdapter = CommentAdapter()
+        rvBookDetailComments.adapter = commentAdapter
+    }
+
 
     private fun setupListeners(){
         btnMovieDetailBack.setOnClickListener {

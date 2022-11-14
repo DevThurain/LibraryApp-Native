@@ -12,4 +12,19 @@
         app:cornerRadius="@dimen/margin_medium_2"
         app:srcCompat="@drawable/dummy_book" />
 
+    <TextView
+        android:id="@+id/tvRecentBookName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ivRecentBookCover"
+        android:layout_alignBottom="@+id/ivRecentBookCover"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="123dp"
+        android:visibility="invisible"
+        android:text="TextView" />
+
 </RelativeLayout>

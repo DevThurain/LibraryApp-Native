@@ -31,12 +31,14 @@
                 android:layout_weight="1" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBookDetailSearch"
                 android:layout_width="@dimen/margin_large"
                 android:layout_height="@dimen/margin_large"
                 android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/ic_search" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBookDetailAddToLibrary"
                 android:layout_width="@dimen/margin_large"
                 android:layout_height="@dimen/margin_large"
                 android:layout_gravity="center_vertical"
@@ -44,6 +46,7 @@
                 app:srcCompat="@drawable/ic_library_add" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBookDetailMore"
                 android:layout_width="@dimen/margin_large"
                 android:layout_height="@dimen/margin_large"
                 android:layout_gravity="center_vertical"
@@ -125,6 +128,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/llReviewAndRating"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -183,6 +187,7 @@
                 />
 
             <LinearLayout
+                android:id="@+id/llBookType"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -230,6 +235,7 @@
                 />
 
             <LinearLayout
+                android:id="@+id/llPageCount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -393,6 +399,7 @@
                     android:textSize="@dimen/text_big_2x" />
 
                 <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/rbBookDetailRating"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -422,6 +429,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/layoutFiveStarRating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium"
@@ -448,6 +456,7 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/layoutFourStarRating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
@@ -474,6 +483,7 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/layoutThreeStarRating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
@@ -500,6 +510,7 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/layoutTwoStarRating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -525,6 +536,7 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/layoutOneStarRating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
@@ -558,10 +570,33 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layoutBookDetailComments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/layoutBookDetailReviews"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBookDetailComments"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rvRating"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/view_holder_comment" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/layoutBookDetailAboutAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/layoutBookDetailReviews"
+            android:layout_below="@id/layoutBookDetailComments"
             android:layout_marginTop="@dimen/margin_large"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/margin_medium_2">
@@ -632,10 +667,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/margin_medium"
-                android:textColor="@color/light_grey"
                 android:text="Google Play refund policy"
-                android:textSize="@dimen/text_regular"
-                />
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/text_regular" />
 
 
         </LinearLayout>

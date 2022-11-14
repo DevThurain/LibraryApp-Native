@@ -10,6 +10,7 @@ import com.thurainx.libraryapp.delegate.BookDelegate
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.data.vos.BookVO
 import com.thurainx.libraryapp.delegate.RecentBookDelegate
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.view_holder_recent_book.view.*
 
 
@@ -60,6 +61,8 @@ class RecentBookAdapter(val delegate: RecentBookDelegate) : CarouselAdapter() {
             Glide.with(itemView.context)
                 .load(bookVO.bookImage)
                 .into(itemView.ivRecentBookCover)
+
+            itemView.tvRecentBookName.text = bookVO.title
         }
     }
 }
