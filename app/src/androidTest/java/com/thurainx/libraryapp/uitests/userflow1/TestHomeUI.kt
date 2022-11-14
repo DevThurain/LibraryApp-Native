@@ -44,6 +44,8 @@ class TestHomeUI {
     @Test
     fun launch_showThreeListThreeBooks() {
 
+        Thread.sleep(2000L)
+
         Espresso.onView(withText("Hardcover Nonfiction"))
             .perform(NestedScrollViewExtension())
 
@@ -123,11 +125,11 @@ class TestHomeUI {
 
     @Test
     fun onTapBook_navigateToBookDetailAndAddedToCarousal() {
+        Thread.sleep(2000L)
+
         // first book
         Espresso.onView(withText("Hardcover Nonfiction"))
             .perform(NestedScrollViewExtension())
-
-        Thread.sleep(1000L)
 
 
         Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
