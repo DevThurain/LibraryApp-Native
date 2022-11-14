@@ -117,7 +117,6 @@ class BookListViewPod @JvmOverloads constructor(
 
 
 
-
     override fun onFinishInflate() {
         super.onFinishInflate()
         setupListeners(context)

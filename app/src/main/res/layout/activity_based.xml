@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.BasedActivity">
 
-
-
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="0dp"
