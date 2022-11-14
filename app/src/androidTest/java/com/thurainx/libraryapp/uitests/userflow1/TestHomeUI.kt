@@ -36,13 +36,13 @@ class TestHomeUI {
     }
 
     @Test
-    fun t1_launch_emptyCarouselView() {
+    fun launch_emptyCarouselView() {
         Espresso.onView(withId(R.id.layoutEmptyRecentList))
             .check(matches(isDisplayed()))
     }
 
     @Test
-    fun t2_launch_showThreeListThreeBooks() {
+    fun launch_showThreeListThreeBooks() {
 
         Espresso.onView(withText("Hardcover Nonfiction"))
             .perform(NestedScrollViewExtension())
@@ -122,9 +122,13 @@ class TestHomeUI {
     }
 
     @Test
-    fun t3_onTapFirstBook_navigateToBookDetailAndAddedToCarousal() {
+    fun onTapBook_navigateToBookDetailAndAddedToCarousal() {
+        // first book
         Espresso.onView(withText("Hardcover Nonfiction"))
             .perform(NestedScrollViewExtension())
+
+        Thread.sleep(1000L)
+
 
         Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
             .viewHolderViewAtPosition(0, R.id.rvBooksFromBookList))
@@ -144,12 +148,7 @@ class TestHomeUI {
             .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
         ).check(matches(withText("THE BOYS FROM BILOXI")))
 
-
-
-    }
-
-    @Test
-    fun t5_onTapSecondBook_navigateToBookDetailAndAddedToCarousal() {
+        // second book
         Espresso.onView(withText("Paperback Nonfiction"))
             .perform(NestedScrollViewExtension())
 
@@ -171,10 +170,7 @@ class TestHomeUI {
             .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
         ).check(matches(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING")))
 
-    }
-
-    @Test
-    fun t6_onTapThirdBook_navigateToBookDetailAndAddedToCarousal() {
+        //third book
         Espresso.onView(withText("Picture Books"))
             .perform(NestedScrollViewExtension())
 
@@ -196,7 +192,60 @@ class TestHomeUI {
             .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
         ).check(matches(withText("THE BODY KEEPS THE SCORE")))
 
+
+
+
     }
+
+//    @Test
+//    fun t5_onTapSecondBook_navigateToBookDetailAndAddedToCarousal() {
+//        Espresso.onView(withText("Paperback Nonfiction"))
+//            .perform(NestedScrollViewExtension())
+//
+//        Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
+//            .viewHolderViewAtPosition(1, R.id.rvBooksFromBookList))
+//            .perform(RecyclerViewActions.actionOnItemAtPosition<BookViewHolder>(0, click()))
+//
+//        Thread.sleep(1000L)
+//
+//        Espresso.onView(withId(R.id.btnMovieDetailBack))
+//            .check(matches(isDisplayed()))
+//
+//        Espresso.onView(withId(R.id.btnMovieDetailBack))
+//            .perform(click())
+//
+//        Thread.sleep(1000L)
+//
+//        Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvRecentBooks)
+//            .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
+//        ).check(matches(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING")))
+//
+//    }
+//
+//    @Test
+//    fun t6_onTapThirdBook_navigateToBookDetailAndAddedToCarousal() {
+//        Espresso.onView(withText("Picture Books"))
+//            .perform(NestedScrollViewExtension())
+//
+//        Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
+//            .viewHolderViewAtPosition(2, R.id.rvBooksFromBookList))
+//            .perform(RecyclerViewActions.actionOnItemAtPosition<BookViewHolder>(0, click()))
+//
+//        Thread.sleep(1000L)
+//
+//        Espresso.onView(withId(R.id.btnMovieDetailBack))
+//            .check(matches(isDisplayed()))
+//
+//        Espresso.onView(withId(R.id.btnMovieDetailBack))
+//            .perform(click())
+//
+//        Thread.sleep(1000L)
+//
+//        Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvRecentBooks)
+//            .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
+//        ).check(matches(withText("THE BODY KEEPS THE SCORE")))
+//
+//    }
 
 
 

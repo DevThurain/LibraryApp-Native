@@ -159,9 +159,4 @@ class TestBookDetailUI {
 
     }
 
-
-
-
-
-
 }
