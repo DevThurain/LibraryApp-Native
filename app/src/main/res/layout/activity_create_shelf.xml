@@ -16,7 +16,7 @@
         android:src="@drawable/ic_chevron_left" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvBookListTitle"
+        android:id="@+id/tvCreateShelfName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/ivCreateShelfClose"

@@ -27,7 +27,7 @@ class BookListViewPod @JvmOverloads constructor(
 
 
     var selectedListType : ListType = ListType.LIST
-    var selectedSortType : SortType = SortType.BOOK_TITLE
+    var selectedSortType : SortType = SortType.DATE
     private val selectedBookList: MutableList<BookVO> = mutableListOf()
 
     var categoryDelegate: CategoryDelegate? = null

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/ivShelfDummy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/book_shelf" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBookDetailTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="4"
+        android:textAlignment="center"
+        android:text="@string/lbl_no_shelves"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_heading_1x"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBookDetailDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:textAlignment="center"
+        android:text="Create shelves to match the way\nyou think."
+        android:textColor="@color/light_grey"
+        android:textSize="@dimen/text_regular" />
+
+
+
+
+</LinearLayout>

@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:paddingHorizontal="0dp"
-                android:text="Sort By Book Title"
+                android:text="@string/sort_by_recently_opened"
                 android:textAllCaps="false"
                 android:textColor="@color/light_grey"
                 android:textSize="@dimen/text_regular"

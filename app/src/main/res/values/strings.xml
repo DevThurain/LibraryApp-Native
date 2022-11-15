@@ -14,4 +14,8 @@
     <string name="lbl_let_s_find_your_next_read">Let\'s find your next read</string>
     <string name="lbl_shop_for_books">Shop for books</string>
     <string name="lbl_empty_detail">From romance to superheroes to Thai cusine, we have tons of books for all your interests</string>
+    <string name="lbl_no_shelves">No shelves</string>
+    <string name="lbl_delete_from_your_library">Delete from your library</string>
+    <string name="lbl_remove_download">Remove download</string>
+    <string name="sort_by_recently_opened">Sort By Recently Opened</string>
 </resources>

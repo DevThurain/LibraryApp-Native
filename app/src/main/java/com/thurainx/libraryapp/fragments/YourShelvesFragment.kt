@@ -56,7 +56,14 @@ class YourShelvesFragment : Fragment(), YourShelfView {
     }
 
     override fun showShelfList(shelfList: List<ShelfVO>) {
-        mShelfAdapter.setNewData(shelfList)
+        if(shelfList.isEmpty()){
+            layoutEmptyShelfList.visibility = View.VISIBLE
+            rvShelves.visibility = View.INVISIBLE
+        }else{
+            layoutEmptyShelfList.visibility = View.GONE
+            rvShelves.visibility = View.VISIBLE
+            mShelfAdapter.setNewData(shelfList)
+        }
     }
 
     override fun navigateToCreateShelf() {

@@ -6,6 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.YourShelvesFragment">
 
+    <include
+        android:id="@+id/layoutEmptyShelfList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        layout="@layout/view_empty_bookshelf" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvShelves"
         android:layout_width="match_parent"
@@ -16,6 +23,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="12"
         tools:listitem="@layout/view_holder_shelf" />
+
 
 
     <com.google.android.material.button.MaterialButton

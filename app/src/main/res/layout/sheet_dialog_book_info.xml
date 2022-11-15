@@ -64,6 +64,97 @@
         android:layout_marginTop="@dimen/margin_medium_2" />
 
     <LinearLayout
+        android:id="@+id/layoutRemoveDownload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/margin_medium"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/margin_large"
+            android:layout_height="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_small"
+            app:srcCompat="@drawable/ic_remove_circle"
+            android:tint="@color/light_grey"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/lbl_remove_download"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/text_regular_2x" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutRemoveFromLibrary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/margin_medium"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/margin_large"
+            android:layout_height="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_small"
+            app:srcCompat="@drawable/ic_delete"
+            android:tint="@color/light_grey"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/lbl_delete_from_your_library"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/text_regular_2x" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutAddToWishList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/margin_medium"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/margin_large"
+            android:layout_height="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_small"
+            app:srcCompat="@drawable/ic_wish_list"
+            android:tint="@color/light_grey"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Add to wish list"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/text_regular_2x" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:id="@+id/layoutAddToShelf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -86,7 +177,7 @@
             android:layout_marginTop="@dimen/margin_small"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Add To Shelf"
+            android:text="Add to shelf"
             android:textColor="@color/light_grey"
             android:textSize="@dimen/text_regular_2x" />
 
@@ -94,7 +185,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutRemoveFromLibrary"
+        android:id="@+id/layoutAboutTheBook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="@dimen/margin_medium"
@@ -106,7 +197,7 @@
             android:layout_height="@dimen/margin_large"
             android:layout_marginStart="@dimen/margin_medium_2"
             android:layout_marginTop="@dimen/margin_small"
-            app:srcCompat="@drawable/ic_remove_circle"
+            app:srcCompat="@drawable/ic_book"
             android:tint="@color/light_grey"
             />
 
@@ -117,12 +208,14 @@
             android:layout_marginTop="@dimen/margin_small"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Remove From Library"
+            android:text="@string/lbl_about_this_ebook"
             android:textColor="@color/light_grey"
             android:textSize="@dimen/text_regular_2x" />
 
 
     </LinearLayout>
+
+
 
 
 
