@@ -16,6 +16,9 @@ import com.levibostian.recyclerviewmatcher.RecyclerViewMatcher
 import com.thurainx.libraryapp.activities.BasedActivity
 import org.junit.runner.RunWith
 import com.thurainx.libraryapp.R
+import com.thurainx.libraryapp.uitests.utils.CAT_1_BOOK_1
+import com.thurainx.libraryapp.uitests.utils.CAT_2_BOOK_1
+import com.thurainx.libraryapp.uitests.utils.CAT_3_BOOK_1
 import com.thurainx.libraryapp.uitests.utils.NestedScrollViewExtension
 import com.thurainx.libraryapp.viewholders.BookViewHolder
 import com.thurainx.libraryapp.viewholders.CategoryViewHolder
@@ -73,7 +76,7 @@ class TestLibraryUI {
         ).perform(click())
 
         Espresso.onView(withId(R.id.rvSmartBookList))
-            .check(matches(hasDescendant(withText("THE BOYS FROM BILOXI"))))
+            .check(matches(hasDescendant(withText(CAT_1_BOOK_1))))
 
         // first clear
         Espresso.onView(
@@ -84,9 +87,9 @@ class TestLibraryUI {
         Thread.sleep(1000L)
 
         Espresso.onView(withId(R.id.rvSmartBookList))
-            .check(matches(hasDescendant(withText("THE BOYS FROM BILOXI"))))
-            .check(matches(hasDescendant(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING"))))
-            .check(matches(hasDescendant(withText("THE BODY KEEPS THE SCORE"))))
+            .check(matches(hasDescendant(withText(CAT_1_BOOK_1))))
+            .check(matches(hasDescendant(withText(CAT_2_BOOK_1))))
+            .check(matches(hasDescendant(withText(CAT_3_BOOK_1))))
 
         // second book
         Espresso.onView(withId(R.id.rvCategory))
@@ -98,7 +101,7 @@ class TestLibraryUI {
         ).perform(click())
 
         Espresso.onView(withId(R.id.rvSmartBookList))
-            .check(matches(hasDescendant(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING"))))
+            .check(matches(hasDescendant(withText(CAT_2_BOOK_1))))
 
 
         // second clear
@@ -113,9 +116,9 @@ class TestLibraryUI {
         Thread.sleep(1000L)
 
         Espresso.onView(withId(R.id.rvSmartBookList))
-            .check(matches(hasDescendant(withText("THE BOYS FROM BILOXI"))))
-            .check(matches(hasDescendant(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING"))))
-            .check(matches(hasDescendant(withText("THE BODY KEEPS THE SCORE"))))
+            .check(matches(hasDescendant(withText(CAT_1_BOOK_1))))
+            .check(matches(hasDescendant(withText(CAT_2_BOOK_1))))
+            .check(matches(hasDescendant(withText(CAT_3_BOOK_1))))
 
         // third book
 
@@ -128,7 +131,7 @@ class TestLibraryUI {
         ).perform(click())
 
         Espresso.onView(withId(R.id.rvSmartBookList))
-            .check(matches(hasDescendant(withText("THE BODY KEEPS THE SCORE"))))
+            .check(matches(hasDescendant(withText(CAT_3_BOOK_1))))
 
         // third clear
         Espresso.onView(withId(R.id.rvCategory))
@@ -142,84 +145,12 @@ class TestLibraryUI {
         Thread.sleep(1000L)
 
         Espresso.onView(withId(R.id.rvSmartBookList))
-            .check(matches(hasDescendant(withText("THE BOYS FROM BILOXI"))))
-            .check(matches(hasDescendant(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING"))))
-            .check(matches(hasDescendant(withText("THE BODY KEEPS THE SCORE"))))
+            .check(matches(hasDescendant(withText(CAT_1_BOOK_1))))
+            .check(matches(hasDescendant(withText(CAT_2_BOOK_1))))
+            .check(matches(hasDescendant(withText(CAT_3_BOOK_1))))
 
     }
 
-//    @Test
-//    fun t3_tapOnCategoryTwo_showCategoryTwoBooks() {
-//        Espresso.onView(withId(R.id.navLibrary))
-//            .perform(click())
-//
-//        Thread.sleep(1000L)
-//
-//        Espresso.onView(withId(R.id.rvCategory))
-//            .perform(RecyclerViewActions.scrollToPosition<CategoryViewHolder>(2))
-//
-//        Espresso.onView(
-//            RecyclerViewMatcher.recyclerViewWithId(R.id.rvCategory)
-//                .viewHolderViewAtPosition(2, R.id.tvCategoryName)
-//        ).perform(click())
-//
-//        Espresso.onView(withId(R.id.rvSmartBookList))
-//            .check(matches(hasDescendant(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING"))))
-//
-//
-//        // clear
-//        Espresso.onView(withId(R.id.rvCategory))
-//            .perform(RecyclerViewActions.scrollToPosition<CategoryViewHolder>(0))
-//
-//        Espresso.onView(
-//            RecyclerViewMatcher.recyclerViewWithId(R.id.rvCategory)
-//                .viewHolderViewAtPosition(0, R.id.btnCategoryClear)
-//        ).perform(click())
-//
-//        Thread.sleep(1000L)
-//
-//        Espresso.onView(withId(R.id.rvSmartBookList))
-//            .check(matches(hasDescendant(withText("THE BOYS FROM BILOXI"))))
-//            .check(matches(hasDescendant(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING"))))
-//            .check(matches(hasDescendant(withText("THE BODY KEEPS THE SCORE"))))
-//
-//    }
-//
-//    @Test
-//    fun t4_tapOnCategoryThree_showCategoryThreeBooks() {
-//        Espresso.onView(withId(R.id.navLibrary))
-//            .perform(click())
-//
-//        Thread.sleep(1000L)
-//
-//        Espresso.onView(withId(R.id.rvCategory))
-//            .perform(RecyclerViewActions.scrollToPosition<CategoryViewHolder>(3))
-//
-//        Espresso.onView(
-//            RecyclerViewMatcher.recyclerViewWithId(R.id.rvCategory)
-//                .viewHolderViewAtPosition(3, R.id.tvCategoryName)
-//        ).perform(click())
-//
-//        Espresso.onView(withId(R.id.rvSmartBookList))
-//            .check(matches(hasDescendant(withText("THE BODY KEEPS THE SCORE"))))
-//
-//        // clear
-//        Espresso.onView(withId(R.id.rvCategory))
-//            .perform(RecyclerViewActions.scrollToPosition<CategoryViewHolder>(0))
-//
-//        Espresso.onView(
-//            RecyclerViewMatcher.recyclerViewWithId(R.id.rvCategory)
-//                .viewHolderViewAtPosition(0, R.id.btnCategoryClear)
-//        ).perform(click())
-//
-//        Thread.sleep(1000L)
-//
-//
-//        Espresso.onView(withId(R.id.rvSmartBookList))
-//            .check(matches(hasDescendant(withText("THE BOYS FROM BILOXI"))))
-//            .check(matches(hasDescendant(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING"))))
-//            .check(matches(hasDescendant(withText("THE BODY KEEPS THE SCORE"))))
-//    }
 
     @Test
     fun t3_tapOnChangeLayout_showSelectedLayout() {
@@ -269,6 +200,98 @@ class TestLibraryUI {
 
 
     }
+
+    @Test
+    fun t3_tapOnSort_showSortedBooks() {
+        Espresso.onView(withId(R.id.navLibrary))
+            .perform(click())
+
+        Thread.sleep(1000L)
+
+        // Sort By Title
+        Espresso.onView(withId(R.id.btnSelectSorting))
+            .perform(click())
+
+        Espresso.onView(withId(R.id.rbSortBookTitle))
+            .perform(click())
+        Thread.sleep(1000L)
+
+
+        Espresso.onView(
+            RecyclerViewMatcher.recyclerViewWithId(R.id.rvSmartBookList)
+                .viewHolderViewAtPosition(0, R.id.tvBookListViewTitle)
+        )
+            .check(matches(withText(CAT_1_BOOK_1)))
+
+        Espresso.onView(
+            RecyclerViewMatcher.recyclerViewWithId(R.id.rvSmartBookList)
+                .viewHolderViewAtPosition(1, R.id.tvBookListViewTitle)
+        )
+            .check(matches(withText(CAT_2_BOOK_1)))
+
+        Espresso.onView(
+            RecyclerViewMatcher.recyclerViewWithId(R.id.rvSmartBookList)
+                .viewHolderViewAtPosition(2, R.id.tvBookListViewTitle)
+        )
+            .check(matches(withText(CAT_3_BOOK_1)))
+
+        // Sort By Author
+        Espresso.onView(withId(R.id.btnSelectSorting))
+            .perform(click())
+
+        Espresso.onView(withId(R.id.rbSortAuthor))
+            .perform(click())
+        Thread.sleep(1000L)
+
+        Espresso.onView(
+            RecyclerViewMatcher.recyclerViewWithId(R.id.rvSmartBookList)
+                .viewHolderViewAtPosition(0, R.id.tvBookListViewTitle)
+        )
+            .check(matches(withText(CAT_3_BOOK_1)))
+
+        Espresso.onView(
+            RecyclerViewMatcher.recyclerViewWithId(R.id.rvSmartBookList)
+                .viewHolderViewAtPosition(1, R.id.tvBookListViewTitle)
+        )
+            .check(matches(withText(CAT_2_BOOK_1)))
+
+        Espresso.onView(
+            RecyclerViewMatcher.recyclerViewWithId(R.id.rvSmartBookList)
+                .viewHolderViewAtPosition(2, R.id.tvBookListViewTitle)
+        )
+            .check(matches(withText(CAT_1_BOOK_1)))
+
+        // Sort By Recently Opened
+        Espresso.onView(withId(R.id.btnSelectSorting))
+            .perform(click())
+
+        Espresso.onView(withId(R.id.rbSortDate))
+            .perform(click())
+        Thread.sleep(1000L)
+
+
+        Espresso.onView(
+            RecyclerViewMatcher.recyclerViewWithId(R.id.rvSmartBookList)
+                .viewHolderViewAtPosition(0, R.id.tvBookListViewTitle)
+        )
+            .check(matches(withText(CAT_3_BOOK_1)))
+
+        Espresso.onView(
+            RecyclerViewMatcher.recyclerViewWithId(R.id.rvSmartBookList)
+                .viewHolderViewAtPosition(1, R.id.tvBookListViewTitle)
+        )
+            .check(matches(withText(CAT_2_BOOK_1)))
+
+        Espresso.onView(
+            RecyclerViewMatcher.recyclerViewWithId(R.id.rvSmartBookList)
+                .viewHolderViewAtPosition(2, R.id.tvBookListViewTitle)
+        )
+            .check(matches(withText(CAT_1_BOOK_1)))
+
+
+    }
+
+
 
 
 }

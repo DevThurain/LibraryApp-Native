@@ -16,7 +16,7 @@ import com.levibostian.recyclerviewmatcher.RecyclerViewMatcher
 import com.thurainx.libraryapp.activities.BasedActivity
 import org.junit.runner.RunWith
 import com.thurainx.libraryapp.R
-import com.thurainx.libraryapp.uitests.utils.NestedScrollViewExtension
+import com.thurainx.libraryapp.uitests.utils.*
 import com.thurainx.libraryapp.viewholders.BookViewHolder
 import org.junit.*
 import org.junit.Test
@@ -55,9 +55,9 @@ class TestHomeUI {
 
         Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
             .viewHolderViewAtPosition(0, R.id.rvBooksFromBookList))
-            .check(matches(hasDescendant(withText("THE BOYS FROM BILOXI"))))
-            .check(matches(hasDescendant(withText("GOING ROGUE"))))
-            .check(matches(hasDescendant(withText("NO PLAN B"))))
+            .check(matches(hasDescendant(withText(CAT_1_BOOK_1))))
+            .check(matches(hasDescendant(withText(CAT_1_BOOK_2))))
+            .check(matches(hasDescendant(withText(CAT_1_BOOK_3))))
 
         Thread.sleep(1000L)
 
@@ -70,9 +70,9 @@ class TestHomeUI {
 
         Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
             .viewHolderViewAtPosition(1, R.id.rvBooksFromBookList))
-            .check(matches(hasDescendant(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING"))))
-            .check(matches(hasDescendant(withText("SURRENDER"))))
-            .check(matches(hasDescendant(withText("THE PHILOSOPHY OF MODERN SONG"))))
+            .check(matches(hasDescendant(withText(CAT_2_BOOK_1))))
+            .check(matches(hasDescendant(withText(CAT_2_BOOK_2))))
+            .check(matches(hasDescendant(withText(CAT_2_BOOK_3))))
 
         Thread.sleep(1000L)
 
@@ -85,9 +85,9 @@ class TestHomeUI {
 
         Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
             .viewHolderViewAtPosition(2, R.id.rvBooksFromBookList))
-            .check(matches(hasDescendant(withText("THE BODY KEEPS THE SCORE"))))
-            .check(matches(hasDescendant(withText("BRAIDING SWEETGRASS"))))
-            .check(matches(hasDescendant(withText("ALL ABOUT LOVE"))))
+            .check(matches(hasDescendant(withText(CAT_3_BOOK_1))))
+            .check(matches(hasDescendant(withText(CAT_3_BOOK_2))))
+            .check(matches(hasDescendant(withText(CAT_3_BOOK_3))))
 
         Thread.sleep(1000L)
 
@@ -148,7 +148,7 @@ class TestHomeUI {
 
         Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvRecentBooks)
             .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
-        ).check(matches(withText("THE BOYS FROM BILOXI")))
+        ).check(matches(withText(CAT_1_BOOK_1)))
 
         // second book
         Espresso.onView(withText("Paperback Nonfiction"))
@@ -170,7 +170,7 @@ class TestHomeUI {
 
         Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvRecentBooks)
             .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
-        ).check(matches(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING")))
+        ).check(matches(withText(CAT_2_BOOK_1)))
 
         //third book
         Espresso.onView(withText("Picture Books"))
@@ -192,7 +192,7 @@ class TestHomeUI {
 
         Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvRecentBooks)
             .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
-        ).check(matches(withText("THE BODY KEEPS THE SCORE")))
+        ).check(matches(withText(CAT_3_BOOK_1)))
 
 
 

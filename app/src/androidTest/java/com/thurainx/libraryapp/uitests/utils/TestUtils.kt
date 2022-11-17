@@ -25,6 +25,17 @@ import com.google.android.material.tabs.TabLayout
 import org.hamcrest.*
 import org.hamcrest.core.AllOf.allOf
 
+const val CAT_1_BOOK_1 = "DESERT STAR"
+const val CAT_1_BOOK_2 = "THE BOYS FROM BILOXI"
+const val CAT_1_BOOK_3 = "FAIRY TALE"
+
+const val CAT_2_BOOK_1 = "FRIENDS, LOVERS, AND THE BIG TERRIBLE THING"
+const val CAT_2_BOOK_2 = "SURRENDER"
+const val CAT_2_BOOK_3 = "I'M GLAD MY MOM DIED"
+
+const val CAT_3_BOOK_1 = "THE BODY KEEPS THE SCORE"
+const val CAT_3_BOOK_2 = "BRAIDING SWEETGRASS"
+const val CAT_3_BOOK_3 = "ALL ABOUT LOVE"
 
 fun <T> first(matcher: Matcher<T>): Matcher<T> {
     return object :BaseMatcher<T>(){
