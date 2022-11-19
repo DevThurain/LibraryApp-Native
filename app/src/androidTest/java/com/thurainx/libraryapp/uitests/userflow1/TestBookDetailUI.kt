@@ -12,6 +12,7 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.levibostian.recyclerviewmatcher.RecyclerViewMatcher
 import com.thurainx.libraryapp.R
 import com.thurainx.libraryapp.activities.BasedActivity
+import com.thurainx.libraryapp.uitests.utils.CAT_3_BOOK_1
 import com.thurainx.libraryapp.uitests.utils.NestedScrollViewExtension
 import com.thurainx.libraryapp.viewholders.BookViewHolder
 import org.junit.After
@@ -33,12 +34,15 @@ class TestBookDetailUI {
 
     @Test
     fun onTapBook_checkBookDetailUI(){
-        Espresso.onView(withText("Hardcover Nonfiction"))
+
+        Thread.sleep(1000L)
+
+        Espresso.onView(withText("Picture Books"))
             .perform(NestedScrollViewExtension())
 
         Espresso.onView(
             RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
-            .viewHolderViewAtPosition(0, R.id.rvBooksFromBookList))
+            .viewHolderViewAtPosition(2, R.id.rvBooksFromBookList))
             .perform(
                 RecyclerViewActions.actionOnItemAtPosition<BookViewHolder>(0,
                     ViewActions.click()
@@ -76,10 +80,10 @@ class TestBookDetailUI {
 
     private fun displayBookDetail(){
         Espresso.onView(withId(R.id.tvBookDetailTitle))
-            .check(matches(withText("THE BOYS FROM BILOXI")))
+            .check(matches(withText(CAT_3_BOOK_1)))
 
         Espresso.onView(withId(R.id.tvBookDetailAuthor))
-            .check(matches(withText("John Grisham")))
+            .check(matches(withText("Bessel van der Kolk")))
 
         Espresso.onView(withId(R.id.tvBookDetailReleasedDate))
             .check(matches(isDisplayed()))
@@ -97,7 +101,7 @@ class TestBookDetailUI {
             .check(matches(isDisplayed()))
 
         Espresso.onView(withId(R.id.tvBookDetailDescription))
-            .check(matches(withText("Two childhood friends follow in their fathers’ footsteps, which puts them on opposite sides of the law.")))
+            .check(matches(withText("How trauma affects the body and mind, and innovative treatments for recovery.")))
 
     }
 

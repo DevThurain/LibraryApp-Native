@@ -69,7 +69,7 @@ class TestLibraryUI {
 
         Thread.sleep(1000L)
 
-        // first book
+        // first category click show first book
         Espresso.onView(
             RecyclerViewMatcher.recyclerViewWithId(R.id.rvCategory)
                 .viewHolderViewAtPosition(1, R.id.tvCategoryName)
@@ -91,7 +91,7 @@ class TestLibraryUI {
             .check(matches(hasDescendant(withText(CAT_2_BOOK_1))))
             .check(matches(hasDescendant(withText(CAT_3_BOOK_1))))
 
-        // second book
+        // second category click show second book
         Espresso.onView(withId(R.id.rvCategory))
             .perform(RecyclerViewActions.scrollToPosition<CategoryViewHolder>(2))
 
@@ -120,7 +120,7 @@ class TestLibraryUI {
             .check(matches(hasDescendant(withText(CAT_2_BOOK_1))))
             .check(matches(hasDescendant(withText(CAT_3_BOOK_1))))
 
-        // third book
+        // third category click show third book
 
         Espresso.onView(withId(R.id.rvCategory))
             .perform(RecyclerViewActions.scrollToPosition<CategoryViewHolder>(3))
@@ -202,7 +202,7 @@ class TestLibraryUI {
     }
 
     @Test
-    fun t3_tapOnSort_showSortedBooks() {
+    fun t4_tapOnSort_showSortedBooks() {
         Espresso.onView(withId(R.id.navLibrary))
             .perform(click())
 

@@ -36,16 +36,17 @@ class TestHomeUI {
     }
 
     @Test
-    fun launch_emptyCarouselView() {
+    fun t1_launch_emptyCarouselView() {
         Espresso.onView(withId(R.id.layoutEmptyRecentList))
             .check(matches(isDisplayed()))
     }
 
     @Test
-    fun launch_showThreeListThreeBooks() {
+    fun t2_launch_showThreeListThreeBooks() {
 
         Thread.sleep(2000L)
 
+        // scroll to Hardcover Nonfiction
         Espresso.onView(withText("Hardcover Nonfiction"))
             .perform(NestedScrollViewExtension())
 
@@ -61,6 +62,7 @@ class TestHomeUI {
 
         Thread.sleep(1000L)
 
+        // scroll to Paperback Nonfiction
         Espresso.onView(withText("Paperback Nonfiction"))
             .perform(NestedScrollViewExtension())
 
@@ -76,6 +78,7 @@ class TestHomeUI {
 
         Thread.sleep(1000L)
 
+        // scroll to Picture Books
         Espresso.onView(withText("Picture Books"))
             .perform(NestedScrollViewExtension())
 
@@ -91,40 +94,10 @@ class TestHomeUI {
 
         Thread.sleep(1000L)
 
-
-
-//        Espresso.onView(withText("Paperback Nonfiction"))
-//            .perform(NestedScrollViewExtension())
-//
-//        Espresso.onView(withId(R.id.rvBookList))
-//            .check(matches(hasDescendant(withText("Hardcover Nonfiction"))))
-//
-//
-//        Thread.sleep(2000L)
-//
-//        Espresso.onView(withText("Picture Books"))
-//            .perform(NestedScrollViewExtension())
-//
-//        Espresso.onView(withId(R.id.rvBookList))
-//            .check(matches(hasDescendant(withText("Paperback Nonfiction"))))
-//
-//
-//        Thread.sleep(2000L)
-
-//
-//        Espresso.onView(withId(R.id.rvBookList))
-//            .perform(RecyclerViewActions.scrollToPosition<BookListViewHolder>(1))
-//            .check(matches(hasDescendant(withText("Hardcover Nonfiction"))))
-//
-//        Thread.sleep(1000L)
-//
-//        Espresso.onView(withId(R.id.rvBookList))
-//            .perform(RecyclerViewActions.scrollToPosition<BookListViewHolder>(2))
-//            .check(matches(hasDescendant(withText("Paperback Nonfiction"))))
     }
 
     @Test
-    fun onTapBook_navigateToBookDetailAndAddedToCarousal() {
+    fun t3_onTapBook_navigateToBookDetailAndAddedToCarousal() {
         Thread.sleep(2000L)
 
         // first book
@@ -198,56 +171,6 @@ class TestHomeUI {
 
 
     }
-
-//    @Test
-//    fun t5_onTapSecondBook_navigateToBookDetailAndAddedToCarousal() {
-//        Espresso.onView(withText("Paperback Nonfiction"))
-//            .perform(NestedScrollViewExtension())
-//
-//        Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
-//            .viewHolderViewAtPosition(1, R.id.rvBooksFromBookList))
-//            .perform(RecyclerViewActions.actionOnItemAtPosition<BookViewHolder>(0, click()))
-//
-//        Thread.sleep(1000L)
-//
-//        Espresso.onView(withId(R.id.btnMovieDetailBack))
-//            .check(matches(isDisplayed()))
-//
-//        Espresso.onView(withId(R.id.btnMovieDetailBack))
-//            .perform(click())
-//
-//        Thread.sleep(1000L)
-//
-//        Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvRecentBooks)
-//            .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
-//        ).check(matches(withText("FRIENDS, LOVERS, AND THE BIG TERRIBLE THING")))
-//
-//    }
-//
-//    @Test
-//    fun t6_onTapThirdBook_navigateToBookDetailAndAddedToCarousal() {
-//        Espresso.onView(withText("Picture Books"))
-//            .perform(NestedScrollViewExtension())
-//
-//        Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvBookList)
-//            .viewHolderViewAtPosition(2, R.id.rvBooksFromBookList))
-//            .perform(RecyclerViewActions.actionOnItemAtPosition<BookViewHolder>(0, click()))
-//
-//        Thread.sleep(1000L)
-//
-//        Espresso.onView(withId(R.id.btnMovieDetailBack))
-//            .check(matches(isDisplayed()))
-//
-//        Espresso.onView(withId(R.id.btnMovieDetailBack))
-//            .perform(click())
-//
-//        Thread.sleep(1000L)
-//
-//        Espresso.onView(RecyclerViewMatcher.recyclerViewWithId(R.id.rvRecentBooks)
-//            .viewHolderViewAtPosition(0,R.id.tvRecentBookName)
-//        ).check(matches(withText("THE BODY KEEPS THE SCORE")))
-//
-//    }
 
 
 

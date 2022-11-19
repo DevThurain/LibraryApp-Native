@@ -245,7 +245,7 @@ class TestShelfDetailUI {
     }
 
     @Test
-    fun t3_tapOnShelfSort_showSortedBooks() {
+    fun t5_tapOnShelfSort_showSortedBooks() {
         // navigate to shelf detail
         Espresso.onView(withId(R.id.navLibrary))
             .perform(click())
@@ -342,7 +342,7 @@ class TestShelfDetailUI {
     }
 
     @Test
-    fun t5_tapOnRemoveBook_removeBook(){
+    fun t6_tapOnRemoveBook_removeBook(){
         // navigate to shelf detail
         Espresso.onView(withId(R.id.navLibrary))
             .perform(click())
@@ -369,7 +369,7 @@ class TestShelfDetailUI {
     }
 
     @Test
-    fun t6_tapOnRename_renameShelfName(){
+    fun t7_tapOnRename_renameShelfName(){
 
         // navigate to shelf detail
         Espresso.onView(withId(R.id.navLibrary))
@@ -405,7 +405,7 @@ class TestShelfDetailUI {
     }
 
     @Test
-    fun t7_tapOnDelete_deleteShelf(){
+    fun t8_tapOnDelete_deleteShelf(){
         // navigate to shelf detail
         Espresso.onView(withId(R.id.navLibrary))
             .perform(click())
