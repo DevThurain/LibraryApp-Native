@@ -151,7 +151,6 @@ class TestLibraryUI {
 
     }
 
-
     @Test
     fun t3_tapOnChangeLayout_showSelectedLayout() {
         Espresso.onView(withId(R.id.navLibrary))

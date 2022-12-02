@@ -142,7 +142,7 @@ class TestShelfUI {
         Thread.sleep(1000L)
 
         Espresso.onView(withId(R.id.rvShelves))
-            .check(matches(hasDescendant(withText(TEST_SHELF_NAME))))
+            .check(matches(hasDescendant(withText("3 books"))))
 
 
 
